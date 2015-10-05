@@ -23,7 +23,7 @@ public class HomeActivity extends FragmentActivity implements OnMapReadyCallback
         // Assume thisActivity is the current activity
         int permissionCheck = ContextCompat.checkSelfPermission(HomeActivity.this,
                 Manifest.permission.LOCATION_HARDWARE);
-            System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"+permissionCheck);
+            System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"+permissionCheck);
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
