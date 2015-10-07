@@ -1,8 +1,10 @@
 package com.example.vivek.yes;
 
 import android.Manifest;
+import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 
@@ -16,14 +18,16 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.security.Permission;
 
 public class HomeActivity extends FragmentActivity implements OnMapReadyCallback {
+    final private int REQUEST_CODE_ASK_PERMISSIONS = 123;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         // Assume thisActivity is the current activity
-        int permissionCheck = ContextCompat.checkSelfPermission(HomeActivity.this,
+       /* int permissionCheck = ContextCompat.checkSelfPermission(HomeActivity.this,
                 Manifest.permission.LOCATION_HARDWARE);
-            System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"+permissionCheck);
+            System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"+permissionCheck);*/
+        // Here, thisActivity is the current activity
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
@@ -37,5 +41,6 @@ public class HomeActivity extends FragmentActivity implements OnMapReadyCallback
         map.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         map.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
+
 
 }
