@@ -64,15 +64,7 @@ public class HomePlacesActivity extends FragmentActivity implements LocationList
         // Creating an array adapter with an array of Place types
         // to populate the spinner
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, mPlaceTypeName);
-
-        // Getting reference to the Spinner
-        mSprPlaceType = (Spinner) findViewById(R.id.spr_place_type);
-
-        // Setting adapter on Spinner to set place types
-        mSprPlaceType.setAdapter(adapter);
-
         Button btnFind;
-
         // Getting reference to Find Button
         btnFind = (Button) findViewById(R.id.btn_find);
 
@@ -130,7 +122,6 @@ public class HomePlacesActivity extends FragmentActivity implements LocationList
                     StringBuilder sb = new StringBuilder("https://maps.googleapis.com/maps/api/place/nearbysearch/json?");
                     sb.append("location="+mLatitude+","+mLongitude);
                     sb.append("&radius=5000");
-                    sb.append("&types="+type);
                     sb.append("&sensor=true");
                     sb.append("&key=AIzaSyA0z5zRlZCsJv3jU5OvTmt51Op7h_zZVVs");
 
@@ -144,6 +135,7 @@ public class HomePlacesActivity extends FragmentActivity implements LocationList
             });
 
         }
+
 
     }
 

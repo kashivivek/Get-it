@@ -12,6 +12,7 @@
     <string name="title_activity_maps">Map</string>
     <string name="title_activity_home">HomeActivity</string>
     <string name="str_btn_find">Find</string>
+    <string name="label_placepickerbutton">place picker</string>
 
     <string-array name="place_type">
         <item>airport</item>
@@ -40,4 +41,6 @@
         <item>Hindu Temple</item>
         <item>Restaurant</item>
     </string-array>
+    <string name="title_activity_main_home">MainHomeActivity</string>
+    <string name="section_format">Hello World from section: %1$d</string>
 </resources>

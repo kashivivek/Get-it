@@ -44,6 +44,19 @@ import android.widget.Button;
 
 
         );
+
+        Button placepicker_button= (Button) findViewById(R.id.placepicker_button);
+        placepicker_button.setOnClickListener(new View.OnClickListener() {
+
+                                                  @Override
+                                                  public void onClick(View v) {
+                                                      Intent intent = new Intent(MainActivity.this, MainHomeActivity.class);
+                                                      startActivity(intent);
+                                                  }
+                                              }
+
+
+        );
     }
         public void statusCheck()
         {
@@ -56,6 +69,7 @@ import android.widget.Button;
 
 
         }
+
         private void buildAlertMessageNoGps() {
             final AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setMessage("Your GPS seems to be disabled, do you want to enable it?")
