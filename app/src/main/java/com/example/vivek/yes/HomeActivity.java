@@ -2,6 +2,7 @@ package com.example.vivek.yes;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
@@ -36,11 +37,13 @@ public class HomeActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap map) {
         // Add a marker in Sydney, Australia, and move the camera.
-        LatLng sydney = new LatLng(-34, 151);
         map.setMyLocationEnabled(true);
+        map.getUiSettings().setCompassEnabled(true);
+        LatLng sydney = new LatLng(-34, 151);
+        LatLng newyork = new LatLng(34, 152);
         map.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         map.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        map.addMarker(new MarkerOptions().position(newyork).title("Marker in newyork"));
+        map.moveCamera(CameraUpdateFactory.newLatLng(newyork));
     }
-
-
 }
