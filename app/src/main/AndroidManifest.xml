@@ -54,6 +54,10 @@
             android:label="@string/title_activity_main_home"
             android:theme="@style/AppTheme.appcompat.light" >
         </activity>
+        <activity
+            android:name=".TimePass"
+            android:label="@string/title_activity_time_pass" >
+        </activity>
     </application>
 
 </manifest>

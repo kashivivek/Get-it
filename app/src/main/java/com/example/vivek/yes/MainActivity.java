@@ -1,6 +1,6 @@
     package com.example.vivek.yes;
 
-import android.app.Activity;
+    import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -24,37 +24,10 @@ import android.widget.Button;
 
                                             @Override
                                             public void onClick(View v) {
-                                                Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                                                Intent intent = new Intent(MainActivity.this, MainHomeActivity.class);
                                                 startActivity(intent);
                                             }
                                         }
-
-
-        );
-
-        Button signup_button= (Button) findViewById(R.id.signup_button);
-        signup_button.setOnClickListener(new View.OnClickListener() {
-
-                                             @Override
-                                             public void onClick(View v) {
-                                                 Intent intent = new Intent(MainActivity.this, HomePlacesActivity.class);
-                                                 startActivity(intent);
-                                             }
-                                         }
-
-
-        );
-
-        Button placepicker_button= (Button) findViewById(R.id.placepicker_button);
-        placepicker_button.setClickable(true);
-        placepicker_button.setOnClickListener(new View.OnClickListener() {
-
-                                                  @Override
-                                                  public void onClick(View v) {
-                                                      Intent intent = new Intent(MainActivity.this, MainHomeActivity.class);
-                                                      startActivity(intent);
-                                                  }
-                                              }
 
 
         );
