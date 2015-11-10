@@ -1,25 +1,27 @@
 package com.example.vivek.yes;
 
-import android.Manifest;
-import android.content.pm.PackageManager;
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.location.Criteria;
 import android.location.Location;
-import android.os.AsyncTask;
+import android.location.LocationManager;
+import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.content.ContextCompat;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import java.security.Permission;
-
 public class HomeActivity extends FragmentActivity implements OnMapReadyCallback {
+    static final LatLng MELBOURNE = new LatLng(-37.81319, 144.96298);
     final private int REQUEST_CODE_ASK_PERMISSIONS = 123;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +36,7 @@ public class HomeActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
     }
 
+    @TargetApi(Build.VERSION_CODES.M)
     @Override
     public void onMapReady(GoogleMap map) {
         // Add a marker in Sydney, Australia, and move the camera.
@@ -45,5 +48,25 @@ public class HomeActivity extends FragmentActivity implements OnMapReadyCallback
         map.moveCamera(CameraUpdateFactory.newLatLng(sydney));
         map.addMarker(new MarkerOptions().position(newyork).title("Marker in newyork"));
         map.moveCamera(CameraUpdateFactory.newLatLng(newyork));
+        Marker melbourne = map.addMarker(new MarkerOptions()
+                .position(MELBOURNE)
+                .title("Melbourne")
+                .snippet("Population: 4,137,400"));
+        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        Criteria criteria = new Criteria();
+        Location location = locationManager.getLastKnownLocation(locationManager.getBestProvider(criteria, false));
+        if (location != null) {
+            map.animateCamera(CameraUpdateFactory.newLatLngZoom(
+                    new LatLng(location.getLatitude(), location.getLongitude()), 13));
+
+            CameraPosition cameraPosition = new CameraPosition.Builder()
+                    .target(new LatLng(location.getLatitude(), location.getLongitude()))      // Sets the center of the map to location user
+                    .zoom(16)                   // Sets the zoom
+                    .tilt(10)                   // Sets the tilt of the camera to 30 degrees
+                    .build();                   // Creates a CameraPosition from the builder
+            map.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+
+        }
+
     }
 }

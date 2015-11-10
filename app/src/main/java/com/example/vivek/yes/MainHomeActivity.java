@@ -13,15 +13,16 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.transition.Slide;
-import android.transition.Transition;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.TextView;
+
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.common.GooglePlayServicesRepairableException;
+import com.google.android.gms.location.places.ui.PlacePicker;
 
 public class MainHomeActivity extends AppCompatActivity {
 
@@ -30,15 +31,6 @@ public class MainHomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            //enable window content transition
-            getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
-            //set the transition
-            Transition ts = new Slide();
-            ts.setDuration(3000);
-            getWindow().setEnterTransition(ts);
-            getWindow().setExitTransition(ts);
-        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -71,10 +63,10 @@ public class MainHomeActivity extends AppCompatActivity {
         Intent intent = new Intent(MainHomeActivity.this, TimePass.class);
 
         // Get the transition name from the string
-        String transitionName = "profile";
+        String transitionName = "profilepic";
 
         // Define the view that the animation will start from
-        View viewStart = findViewById(R.id.card_view);
+        View viewStart = findViewById(R.id.profile_pic);
 
         ActivityOptionsCompat options =
 
@@ -87,10 +79,25 @@ public class MainHomeActivity extends AppCompatActivity {
 
     }
 
+    public void openbox(View view) throws GooglePlayServicesNotAvailableException, GooglePlayServicesRepairableException {
+
+        int PLACE_PICKER_REQUEST = 1;
+        PlacePicker.IntentBuilder builder = new PlacePicker.IntentBuilder();
+        startActivityForResult(builder.build(this), PLACE_PICKER_REQUEST);
+
+    }
+
     public void openMaps(View view) {
 
         // Ordinary Intent for launching a new activity
         Intent intent = new Intent(MainHomeActivity.this, HomePlacesActivity.class);
+        startActivity(intent);
+    }
+
+    public void openMapsMarker(View view) {
+
+        // Ordinary Intent for launching a new activity
+        Intent intent = new Intent(MainHomeActivity.this, HomeActivity.class);
         startActivity(intent);
     }
 
@@ -116,6 +123,138 @@ public class MainHomeActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public static class MainHomeFragment extends Fragment {
+        /**
+         * The fragment argument representing the section number for this
+         * fragment.
+         */
+        private static final String ARG_SECTION_NUMBER = "section_number";
+
+        public MainHomeFragment() {
+        }
+
+        /**
+         * Returns a new instance of this fragment for the given section
+         * number.
+         */
+        public static MainHomeFragment newInstance(int sectionNumber) {
+            MainHomeFragment fragment = new MainHomeFragment();
+            Bundle args = new Bundle();
+            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
+            fragment.setArguments(args);
+            return fragment;
+        }
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+            View rootView = inflater.inflate(R.layout.fragment_main_home, container, false);
+            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
+            /*textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));*/
+            return rootView;
+        }
+
+
+    }
+
+    /**
+     * A placeholder fragment containing a simple view.
+     */
+    public static class HouseholdFragment extends Fragment {
+        /**
+         * The fragment argument representing the section number for this
+         * fragment.
+         */
+        private static final String ARG_SECTION_NUMBER = "section_number";
+
+        public HouseholdFragment() {
+        }
+
+        /**
+         * Returns a new instance of this fragment for the given section
+         * number.
+         */
+        public static HouseholdFragment newInstance(int sectionNumber) {
+            HouseholdFragment fragment = new HouseholdFragment();
+            Bundle args = new Bundle();
+            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
+            fragment.setArguments(args);
+            return fragment;
+        }
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+            View rootView = inflater.inflate(R.layout.fragment_household, container, false);
+            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
+            /*textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));*/
+            return rootView;
+        }
+    }
+
+    public static class GroceriesFragment extends Fragment {
+        /**
+         * The fragment argument representing the section number for this
+         * fragment.
+         */
+        private static final String ARG_SECTION_NUMBER = "section_number";
+
+        public GroceriesFragment() {
+        }
+
+        /**
+         * Returns a new instance of this fragment for the given section
+         * number.
+         */
+        public static GroceriesFragment newInstance(int sectionNumber) {
+            GroceriesFragment fragment = new GroceriesFragment();
+            Bundle args = new Bundle();
+            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
+            fragment.setArguments(args);
+            return fragment;
+        }
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+            View rootView = inflater.inflate(R.layout.fragment_groceries_home, container, false);
+            /*TextView textView = (TextView) rootView.findViewById(R.id.section_label);
+            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));*/
+            return rootView;
+        }
+    }
+
+    public static class FoodFragment extends Fragment {
+        /**
+         * The fragment argument representing the section number for this
+         * fragment.
+         */
+        private static final String ARG_SECTION_NUMBER = "section_number";
+
+        public FoodFragment() {
+        }
+
+        /**
+         * Returns a new instance of this fragment for the given section
+         * number.
+         */
+        public static FoodFragment newInstance(int sectionNumber) {
+            FoodFragment fragment = new FoodFragment();
+            Bundle args = new Bundle();
+            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
+            fragment.setArguments(args);
+            return fragment;
+        }
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+            View rootView = inflater.inflate(R.layout.fragment_food_home, container, false);
+            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
+            /*textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));*/
+            return rootView;
+        }
+    }
 
     /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
@@ -156,7 +295,6 @@ public class MainHomeActivity extends AppCompatActivity {
         }
 
 
-
         @Override
         public CharSequence getPageTitle(int position) {
             switch (position) {
@@ -170,139 +308,6 @@ public class MainHomeActivity extends AppCompatActivity {
                     return "House Hold Activites";
             }
             return super.getPageTitle(position);
-        }
-    }
-
-
-    public static class MainHomeFragment extends Fragment {
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
-        private static final String ARG_SECTION_NUMBER = "section_number";
-
-        /**
-         * Returns a new instance of this fragment for the given section
-         * number.
-         */
-        public static MainHomeFragment newInstance(int sectionNumber) {
-            MainHomeFragment fragment = new MainHomeFragment();
-            Bundle args = new Bundle();
-            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
-            fragment.setArguments(args);
-            return fragment;
-        }
-
-        public MainHomeFragment() {
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_main_home, container, false);
-            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            /*textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));*/
-           return rootView;
-        }
-
-
-    }
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-    public static class HouseholdFragment extends Fragment {
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
-        private static final String ARG_SECTION_NUMBER = "section_number";
-
-        /**
-         * Returns a new instance of this fragment for the given section
-         * number.
-         */
-        public static HouseholdFragment newInstance(int sectionNumber) {
-            HouseholdFragment fragment = new HouseholdFragment();
-            Bundle args = new Bundle();
-            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
-            fragment.setArguments(args);
-            return fragment;
-        }
-
-        public HouseholdFragment() {
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_household, container, false);
-            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            /*textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));*/
-            return rootView;
-        }
-    }
-
-
-    public static class GroceriesFragment extends Fragment {
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
-        private static final String ARG_SECTION_NUMBER = "section_number";
-
-        /**
-         * Returns a new instance of this fragment for the given section
-         * number.
-         */
-        public static GroceriesFragment newInstance(int sectionNumber) {
-            GroceriesFragment fragment = new GroceriesFragment();
-            Bundle args = new Bundle();
-            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
-            fragment.setArguments(args);
-            return fragment;
-        }
-
-        public GroceriesFragment() {
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_groceries_home, container, false);
-            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            /*textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));*/
-            return rootView;
-        }
-    }
-    public static class FoodFragment extends Fragment {
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
-        private static final String ARG_SECTION_NUMBER = "section_number";
-
-        /**
-         * Returns a new instance of this fragment for the given section
-         * number.
-         */
-        public static FoodFragment newInstance(int sectionNumber) {
-            FoodFragment fragment = new FoodFragment();
-            Bundle args = new Bundle();
-            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
-            fragment.setArguments(args);
-            return fragment;
-        }
-
-        public FoodFragment() {
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_food_home, container, false);
-            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            /*textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));*/
-            return rootView;
         }
     }
 }

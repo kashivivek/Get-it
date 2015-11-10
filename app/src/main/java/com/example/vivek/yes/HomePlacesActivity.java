@@ -12,6 +12,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
+import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
@@ -20,6 +21,7 @@ import android.widget.Spinner;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -37,16 +39,15 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
 
-public class HomePlacesActivity extends FragmentActivity implements LocationListener {
+public class HomePlacesActivity extends FragmentActivity implements LocationListener, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
     GoogleMap mGoogleMap;
     Spinner mSprPlaceType;
-
     String[] mPlaceType = null;
     String[] mPlaceTypeName = null;
-
     double mLatitude = 0;
     double mLongitude = 0;
+    private GoogleApiClient mGoogleApiClient;
 
     @TargetApi(Build.VERSION_CODES.M)
     @Override
@@ -135,6 +136,35 @@ public class HomePlacesActivity extends FragmentActivity implements LocationList
             });
 
         }
+        /*mGoogleApiClient = new GoogleApiClient
+                .Builder(this)
+                .addApi(Places.GEO_DATA_API)
+                .addApi(Places.PLACE_DETECTION_API)
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .build();
+
+
+        AddPlaceRequest place =
+                new AddPlaceRequest(
+                        "Manly Sea Life Sanctuary", // Name
+                        new LatLng(-33.7991, 151.2813), // Latitude and longitude
+                        "W Esplanade, Manly NSW 2095", // Address
+                        Collections.singletonList(Place.TYPE_AQUARIUM), // Place types
+                        "+61 1800 199 742", // Phone number
+                        Uri.parse("http://www.manlysealifesanctuary.com.au/") // Website
+                );
+
+        Places.GeoDataApi.addPlace(mGoogleApiClient, place)
+                .setResultCallback(new ResultCallback<PlaceBuffer>() {
+                    @Override
+                    public void onResult(PlaceBuffer places) {
+                        *//*Log.i(TAG, "Place add result: " + places.getStatus().toString());
+                        Log.i(TAG, "Added place: " + places.get(0).getName().toString());*//*
+                        places.release();
+                    }
+                });
+        mGoogleApiClient.disconnect();*/
 
 
     }
@@ -180,25 +210,93 @@ public class HomePlacesActivity extends FragmentActivity implements LocationList
         return data;
     }
 
-    /** A class, to download Google Places */
-    private class PlacesTask extends AsyncTask<String, Integer, String>{
+    @Override
+    public void onConnected(Bundle bundle) {
+
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+
+    }
+
+    @Override
+    public void onConnectionFailed(ConnectionResult connectionResult) {
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_home_places, menu);
+        return true;
+    }
+
+    @Override
+    public void onLocationChanged(Location location) {
+        mLatitude = location.getLatitude();
+        mLongitude = location.getLongitude();
+        LatLng latLng = new LatLng(mLatitude, mLongitude);
+
+        mGoogleMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+        mGoogleMap.animateCamera(CameraUpdateFactory.zoomTo(12));
+    }
+/*
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mGoogleApiClient.connect();
+    }
+
+    @Override
+    protected void onStop() {
+        mGoogleApiClient.disconnect();
+        super.onStop();
+    }*/
+
+    @Override
+    public void onProviderDisabled(String provider) {
+        // TODO Auto-generated method stub
+    }
+
+    @Override
+    public void onProviderEnabled(String provider) {
+        // TODO Auto-generated method stub
+    }
+
+   /* @Override
+    public void onMapReady(GoogleMap map) {
+        map.addMarker(new MarkerOptions()
+                .position(new LatLng(10, 10))
+                .title("Hello world"));
+    }*/
+
+    @Override
+    public void onStatusChanged(String provider, int status, Bundle extras) {
+        // TODO Auto-generated method stub
+    }
+
+    /**
+     * A class, to download Google Places
+     */
+    private class PlacesTask extends AsyncTask<String, Integer, String> {
 
         String data = null;
 
         // Invoked by execute() method of this object
         @Override
         protected String doInBackground(String... url) {
-            try{
+            try {
                 data = downloadUrl(url[0]);
-            }catch(Exception e){
-                Log.d("Background Task",e.toString());
+            } catch (Exception e) {
+                Log.d("Background Task", e.toString());
             }
             return data;
         }
 
         // Executed after the complete execution of doInBackground() method
         @Override
-        protected void onPostExecute(String result){
+        protected void onPostExecute(String result) {
             ParserTask parserTask = new ParserTask();
 
             // Start parsing the Google places in JSON format
@@ -208,38 +306,40 @@ public class HomePlacesActivity extends FragmentActivity implements LocationList
 
     }
 
-    /** A class to parse the Google Places in JSON format */
-    private class ParserTask extends AsyncTask<String, Integer, List<HashMap<String,String>>>{
+    /**
+     * A class to parse the Google Places in JSON format
+     */
+    private class ParserTask extends AsyncTask<String, Integer, List<HashMap<String, String>>> {
 
         JSONObject jObject;
 
         // Invoked by execute() method of this object
         @Override
-        protected List<HashMap<String,String>> doInBackground(String... jsonData) {
+        protected List<HashMap<String, String>> doInBackground(String... jsonData) {
 
             List<HashMap<String, String>> places = null;
             PlaceJSONParser placeJsonParser = new PlaceJSONParser();
 
-            try{
+            try {
                 jObject = new JSONObject(jsonData[0]);
 
                 /** Getting the parsed data as a List construct */
                 places = placeJsonParser.parse(jObject);
 
-            }catch(Exception e){
-                Log.d("Exception",e.toString());
+            } catch (Exception e) {
+                Log.d("Exception", e.toString());
             }
             return places;
         }
 
         // Executed after the complete execution of doInBackground() method
         @Override
-        protected void onPostExecute(List<HashMap<String,String>> list){
+        protected void onPostExecute(List<HashMap<String, String>> list) {
 
             // Clears all the existing markers
             mGoogleMap.clear();
 
-            for(int i=0;i<list.size();i++){
+            for (int i = 0; i < list.size(); i++) {
 
                 // Creating a marker
                 MarkerOptions markerOptions = new MarkerOptions();
@@ -272,31 +372,5 @@ public class HomePlacesActivity extends FragmentActivity implements LocationList
                 mGoogleMap.addMarker(markerOptions);
             }
         }
-    }
-
-
-    @Override
-    public void onLocationChanged(Location location) {
-        mLatitude = location.getLatitude();
-        mLongitude = location.getLongitude();
-        LatLng latLng = new LatLng(mLatitude, mLongitude);
-
-        mGoogleMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-        mGoogleMap.animateCamera(CameraUpdateFactory.zoomTo(12));
-    }
-
-    @Override
-    public void onProviderDisabled(String provider) {
-        // TODO Auto-generated method stub
-    }
-
-    @Override
-    public void onProviderEnabled(String provider) {
-        // TODO Auto-generated method stub
-    }
-
-    @Override
-    public void onStatusChanged(String provider, int status, Bundle extras) {
-        // TODO Auto-generated method stub
     }
 }

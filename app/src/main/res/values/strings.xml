@@ -43,5 +43,6 @@
     </string-array>
     <string name="title_activity_main_home">MainHomeActivity</string>
     <string name="section_format">Hello World from section: %1$d</string>
-    <string name="title_activity_time_pass">TimePass</string>
+    <string name="title_activity_time_pass">Profile Picture</string>
+    <string name="user_name">Kashi Vivek Budda</string>
 </resources>
