@@ -58,6 +58,11 @@
             android:name=".TimePass"
             android:label="@string/title_activity_time_pass" >
         </activity>
+        <activity
+            android:name=".ProductActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
+        </activity>
     </application>
 
 </manifest>
