@@ -1,5 +1,6 @@
 package com.example.vivek.yes;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -26,8 +27,11 @@ import com.google.android.gms.location.places.ui.PlacePicker;
 
 public class MainHomeActivity extends AppCompatActivity {
 
+    public static final String PREFS_NAME = "MyApp_Settings";
+    Context context;
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -38,7 +42,10 @@ public class MainHomeActivity extends AppCompatActivity {
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
-
+       /* SharedPreferences saved_values = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        String count = saved_values.getString("count", null);
+        System.out.println("@@@@@@@@@@iloveanusha"+count+ "@@@@@@@@@@@");
+*/
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
@@ -56,6 +63,12 @@ public class MainHomeActivity extends AppCompatActivity {
 
     }
 
+
+    //Database Example
+    public void floatingthing(View view) {
+        Intent intent = new Intent(MainHomeActivity.this, MainHomeActivity.class);
+        startActivity(intent);
+    }
     // MainActivity
     public void animateIntent(View view) {
 
@@ -90,7 +103,8 @@ public class MainHomeActivity extends AppCompatActivity {
     public void openMaps(View view) {
 
         // Ordinary Intent for launching a new activity
-        Intent intent = new Intent(MainHomeActivity.this, HomePlacesActivity.class);
+        //Intent intent = new Intent(MainHomeActivity.this, HomePlacesActivity.class);
+        Intent intent = new Intent(MainHomeActivity.this, ProductInfo.class);
         startActivity(intent);
     }
 

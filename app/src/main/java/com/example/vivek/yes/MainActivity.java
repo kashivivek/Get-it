@@ -1,31 +1,47 @@
     package com.example.vivek.yes;
 
     import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.location.LocationManager;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
+    import android.app.AlertDialog;
+    import android.content.Context;
+    import android.content.DialogInterface;
+    import android.content.Intent;
+    import android.content.SharedPreferences;
+    import android.location.LocationManager;
+    import android.os.Bundle;
+    import android.preference.PreferenceManager;
+    import android.view.Menu;
+    import android.view.MenuItem;
+    import android.view.View;
+    import android.widget.Button;
+    import android.widget.Toast;
 
     public class MainActivity extends Activity {
-
+        public static final String PREFS_NAME = "MyPrefs";
+        DBHelper db = new DBHelper(this);
+        SharedPreferences sharedpreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         statusCheck();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        db.onUpgrade(db.getWritableDatabase(), 1, 2);
+        SharedPreferences saved_values = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        SharedPreferences.Editor editor = saved_values.edit();
+        editor.putString("tablename", "validation");
+        editor.putString("username", "vivek");
+        editor.putString("password", "vivek123");
+        editor.commit();
+        db.generateTable();
         Button login_button= (Button) findViewById(R.id.submit_button);
         login_button.setOnClickListener(new View.OnClickListener() {
 
                                             @Override
                                             public void onClick(View v) {
+                                                if (db.validateUser() == true) {
                                                 Intent intent = new Intent(MainActivity.this, MainHomeActivity.class);
-                                                startActivity(intent);
+                                                    startActivity(intent);
+                                                } else
+                                                    Toast.makeText(MainActivity.this, "Login Failed, Please use valid credentials picheswar!!", Toast.LENGTH_SHORT).show();
                                             }
                                         }
 

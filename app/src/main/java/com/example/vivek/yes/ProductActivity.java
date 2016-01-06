@@ -11,8 +11,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 
-
 public class ProductActivity extends AppCompatActivity {
+
     CollapsingToolbarLayout collapsingToolbarLayout;
     ImageView image;
 
@@ -24,7 +24,7 @@ public class ProductActivity extends AppCompatActivity {
         image.setImageResource(R.drawable.pic2);
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
-        collapsingToolbarLayout.setTitle("Collapsing");
+        collapsingToolbarLayout.setTitle("Product");
         collapsingToolbarLayout.setExpandedTitleColor(getResources().getColor(android.R.color.transparent));
         setPalette();
 
@@ -32,7 +32,7 @@ public class ProductActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.sample_actions, menu);
+        // getMenuInflater().inflate(R.menu.sample_actions, menu);
         return true;
     }
 
