@@ -23,6 +23,7 @@
         android:layout_below="@+id/logoimage"
         android:hint="@string/label_username"
         android:labelFor="@string/label_username"
+        android:text="vivek"
         >
 
         <requestFocus />
@@ -36,6 +37,7 @@
         android:layout_below="@+id/username"
         android:hint="@string/label_password"
         android:inputType="textPassword"
+        android:text="vivek123"
         >
 
         <requestFocus />

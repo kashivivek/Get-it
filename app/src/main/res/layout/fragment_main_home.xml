@@ -14,30 +14,47 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:onClick="animateIntent"
-        android:src="@drawable/logo_image"
+        android:src="@drawable/profile_pic1"
         android:transitionName="profilepic"
         app:border_color="#EEEEEE"
         app:border_width="4dp"
         app:shadow="true" />
 
-    <!--<TextView
+    <TextView
+        android:id="@+id/display_uname"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Kashi Vivek"
-        android:id="@+id/textview1"
-        android:layout_toRightOf="@+id/profile_pic"
-        android:layout_margin="3dip"/>-->
-
-    <com.example.vivek.yes.CustomTextView
-        android:id="@+id/text_username"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="3dip"
         android:layout_toRightOf="@+id/profile_pic"
-        android:paddingTop="5dp"
         android:text="@string/user_name"
-        android:textColor="#000"
-        android:textSize="18dp" />
+        android:textColor="@color/black"
+        android:textSize="24dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/Age_Place"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/display_uname"
+        android:layout_margin="3dip"
+        android:layout_toRightOf="@+id/profile_pic"
+        android:text="@string/age_place"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold" />
+    <!--
+
+        <com.example.vivek.yes.CustomTextView
+            android:id="@+id/text_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="3dip"
+            android:layout_toRightOf="@+id/profile_pic"
+            android:paddingTop="5dp"
+            android:text="@string/user_name"
+            android:textColor="#000"
+            android:textSize="18dp" />
+    -->
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -46,38 +63,21 @@
     <android.support.v7.widget.CardView
         xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:id="@+id/card_view"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_gravity="center"
-        android:layout_margin="5dp"
-        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         card_view:cardCornerRadius="4dp"
-
         >
-        <ImageView
-            android:id="@+id/imageView1"
-            android:layout_width="wrap_content"
-            android:layout_height="200dp"
-            android:src="@drawable/household"  />
+
+        <TextView
+            android:id="@+id/info_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/profile_pic"
+            android:text="Recent Activities"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            android:textStyle="bold" />
     </android.support.v7.widget.CardView>
-
-        <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/card_view2"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_gravity="center"
-            android:layout_margin="5dp"
-            android:layout_toRightOf="@+id/card_view"
-            android:padding="5dp"
-            card_view:cardCornerRadius="4dp"
-
-            >
-
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="wrap_content"
-                android:layout_height="200dp"
-                android:src="@drawable/household" />
-        </android.support.v7.widget.CardView>
     </FrameLayout>
+
 </RelativeLayout>

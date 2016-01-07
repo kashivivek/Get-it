@@ -1,6 +1,8 @@
 package com.example.vivek.yes;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -21,6 +23,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.vivek.utils.SessionManager;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.location.places.ui.PlacePicker;
@@ -29,14 +32,17 @@ public class MainHomeActivity extends AppCompatActivity {
 
     public static final String PREFS_NAME = "MyApp_Settings";
     Context context;
+    SessionManager session;
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
+        setTitle("Start your hunt here!");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_home);
+        session = new SessionManager(getApplicationContext());
+        session.checkLogin();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         // Create the adapter that will return a fragment for each of the three
@@ -63,6 +69,28 @@ public class MainHomeActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        logout_dialog();
+    }
+
+    public void logout_dialog() {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("You are about to log out. Are you sure?")
+                .setCancelable(false)
+                .setPositiveButton("Log out", new DialogInterface.OnClickListener() {
+                    public void onClick(final DialogInterface dialog, final int id) {
+                        session.logoutUser();
+                    }
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(final DialogInterface dialog, final int id) {
+                        dialog.cancel();
+                    }
+                });
+        final AlertDialog alert = builder.create();
+        alert.show();
+    }
 
     //Database Example
     public void floatingthing(View view) {
@@ -130,7 +158,8 @@ public class MainHomeActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_logout) {
+            logout_dialog();
             return true;
         }
 

@@ -12,18 +12,16 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DBHelper extends SQLiteOpenHelper {
 
     // database version
-    private static final String database_NAME = "userDB";
+    private static final String database_NAME = "Get_it_db";
     private static final int database_VERSION = 1;
     private static final String table_BOOKS = "books";
     private static final String table_NAME = "users";
-    private static final String pref_username = "vivek";
-    private static final String pref_password = "vivek123";
     private static final String book_ID = "id";
     private static final String book_TITLE = "title";
     private static final String book_AUTHOR = "author";
-
-
     private static final String[] COLUMNS = {book_ID, book_TITLE, book_AUTHOR};
+    private static String pref_username;
+    private static String pref_password;
 
     public DBHelper(Context context) {
         super(context, database_NAME, null, database_VERSION);
@@ -54,7 +52,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public boolean validateUser() {
+    public boolean validateUser(String pref_username, String pref_password) {
 
         // select book query
         boolean result;
@@ -71,23 +69,16 @@ public class DBHelper extends SQLiteOpenHelper {
             if (cursor.moveToFirst()) {
                 do {
                     username = cursor.getString(0);
-                    System.out.println("@@@@@@@@@@user" + cursor.getString(0));
-                    System.out.println("@@@@@@@@@@pref_username" + pref_username);
+                   /* System.out.println("@@@@@@@@@@user" + cursor.getString(0));
+                    System.out.println("@@@@@@@@@@pref_username" + pref_username);*/
                     password = cursor.getString(1);
-                    System.out.println("@@@@@@@@@@password" + cursor.getString(1));
-                    System.out.println("@@@@@@@@@@pref_password" + pref_password);
+                    /*System.out.println("@@@@@@@@@@password" + cursor.getString(1));
+                    System.out.println("@@@@@@@@@@pref_password" + pref_password);*/
                 } while (cursor.moveToNext());
             }
-            if (username.equals(pref_username) && password.equals(pref_password)) {
-                result = true;
-                System.out.println("in");
-            } else {
-                System.out.println("out");
-                result = false;
-            }
+            result = username.equals(pref_username) && password.equals(pref_password);
         } else
             result = false;
-        System.out.println("@@@@@@@@@@@@result" + result);
         return result;
     }
 
