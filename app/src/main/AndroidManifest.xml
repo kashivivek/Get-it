@@ -63,6 +63,10 @@
         <activity
             android:name=".BookActivity"
             android:label="@string/title_activity_book"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".recentServicesActivity"
+            android:label="@string/title_activity_recent_services"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

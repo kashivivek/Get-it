@@ -10,7 +10,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.example.vivek.yes.Book;
+import com.example.vivek.pojo.Records;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -21,12 +21,12 @@ public class RetrieveRecentActivities extends SQLiteOpenHelper {
     private static final int database_VERSION = 1;
     // database name
     private static final String database_NAME = "Get_it_db";
-    private static final String table_BOOKS = "recent_activity";
-    private static final String book_ID = "id";
-    private static final String book_TITLE = "title";
-    private static final String book_AUTHOR = "author";
+    private static final String table_NAME = "recent_activity";
+    private static final String service_date = "service_date";
+    private static final String service_name = "service_name";
+    private static final String service_category = "service_category";
 
-    private static final String[] COLUMNS = {book_ID, book_TITLE, book_AUTHOR};
+    private static final String[] COLUMNS = {service_date, service_name, service_category};
 
     public RetrieveRecentActivities(Context context) {
         super(context, database_NAME, null, database_VERSION);
@@ -35,104 +35,57 @@ public class RetrieveRecentActivities extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         // SQL statement to create book table
-        String CREATE_BOOK_TABLE = "CREATE TABLE books ( " + "id INTEGER PRIMARY KEY AUTOINCREMENT, " + "title TEXT, " + "author TEXT )";
-        db.execSQL(CREATE_BOOK_TABLE);
+        String CREATE_TABLE = "CREATE TABLE " + table_NAME + " ( " + "service_date TEXT, " + "service_name TEXT, " + "service_category TEXT )";
+        db.execSQL(CREATE_TABLE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // drop books table if already exists
-        db.execSQL("DROP TABLE IF EXISTS books");
+        db.execSQL("DROP TABLE IF EXISTS " + table_NAME);
         this.onCreate(db);
     }
 
-    public void createBook(Book book) {
-        // get reference of the BookDB database
+    public void createRecords(Records records) {
+        // get reference of the get_it_db database
         SQLiteDatabase db = this.getWritableDatabase();
 
         // make values to be inserted
         ContentValues values = new ContentValues();
-        values.put(book_TITLE, book.getTitle());
-        values.put(book_AUTHOR, book.getAuthor());
+        values.put(service_date, records.getServiceDate());
+        values.put(service_name, records.getName());
+        values.put(service_category, records.getCategory());
 
-        // insert book
-        db.insert(table_BOOKS, null, values);
+        // insert data
+        db.insert(table_NAME, null, values);
 
         // close database transaction
         db.close();
     }
 
-    public Book readBook(int id) {
-        // get reference of the BookDB database
-        SQLiteDatabase db = this.getReadableDatabase();
+    public List getAllRecords() {
+        List records_list = new LinkedList();
 
-        // get book query
-        Cursor cursor = db.query(table_BOOKS, // a. table
-                COLUMNS, " id = ?", new String[]{String.valueOf(id)}, null, null, null, null);
+        // select records query
+        String query = "SELECT  * FROM " + table_NAME;
 
-        // if results !=null, parse the first one
-        if (cursor != null)
-            cursor.moveToFirst();
-
-        Book book = new Book();
-        book.setId(Integer.parseInt(cursor.getString(0)));
-        book.setTitle(cursor.getString(1));
-        book.setAuthor(cursor.getString(2));
-
-        return book;
-    }
-
-    public List getAllBooks() {
-        List books = new LinkedList();
-
-        // select book query
-        String query = "SELECT  * FROM " + table_BOOKS;
-
-        // get reference of the BookDB database
+        // get reference of the Get_it_DB database
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(query, null);
 
         // parse all results
-        Book book = null;
+        Records records = null;
         if (cursor.moveToFirst()) {
             do {
-                book = new Book();
-                book.setId(Integer.parseInt(cursor.getString(0)));
-                book.setTitle(cursor.getString(1));
-                book.setAuthor(cursor.getString(2));
+                records = new Records();
+                records.setServiceDate(cursor.getString(0));
+                records.setName(cursor.getString(1));
+                records.setCategory(cursor.getString(2));
 
                 // Add book to books
-                books.add(book);
+                records_list.add(records);
             } while (cursor.moveToNext());
         }
-        return books;
-    }
-
-    public int updateBook(Book book) {
-
-        // get reference of the BookDB database
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        // make values to be inserted
-        ContentValues values = new ContentValues();
-        values.put("title", book.getTitle()); // get title
-        values.put("author", book.getAuthor()); // get author
-
-        // update
-        int i = db.update(table_BOOKS, values, book_ID + " = ?", new String[]{String.valueOf(book.getId())});
-
-        db.close();
-        return i;
-    }
-
-    // Deleting single book
-    public void deleteBook(Book book) {
-
-        // get reference of the BookDB database
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        // delete book
-        db.delete(table_BOOKS, book_ID + " = ?", new String[]{String.valueOf(book.getId())});
-        db.close();
+        return records_list;
     }
 }

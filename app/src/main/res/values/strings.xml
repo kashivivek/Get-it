@@ -157,4 +157,5 @@ Imperdiet id felis lectus accumsan class, neque nullam quam, adipiscing turpis v
     <string name="title_activity_book">BookActivity</string>
     <string name="label_signupbutton">Signup?</string>
     <string name="age_place">22 M, Hyderabad</string>
+    <string name="title_activity_recent_services">Recent Services</string>
 </resources>

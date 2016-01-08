@@ -43,6 +43,7 @@ public class MainHomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main_home);
         session = new SessionManager(getApplicationContext());
         session.checkLogin();
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         // Create the adapter that will return a fragment for each of the three
@@ -97,6 +98,13 @@ public class MainHomeActivity extends AppCompatActivity {
         Intent intent = new Intent(MainHomeActivity.this, MainHomeActivity.class);
         startActivity(intent);
     }
+
+    //Recent services
+    public void openRecentServices(View view) {
+        Intent intent = new Intent(MainHomeActivity.this, recentServicesActivity.class);
+        startActivity(intent);
+    }
+
     // MainActivity
     public void animateIntent(View view) {
 
@@ -194,10 +202,9 @@ public class MainHomeActivity extends AppCompatActivity {
             View rootView = inflater.inflate(R.layout.fragment_main_home, container, false);
             TextView textView = (TextView) rootView.findViewById(R.id.section_label);
             /*textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));*/
+
             return rootView;
         }
-
-
     }
 
     /**
