@@ -4,18 +4,20 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.PagerTabStripV22;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -49,6 +51,8 @@ public class MainHomeActivity extends AppCompatActivity {
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+        PagerTabStripV22 titleStrip = (PagerTabStripV22) findViewById(R.id.pager_tab_strip);
+        titleStrip.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
        /* SharedPreferences saved_values = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         String count = saved_values.getString("count", null);
         System.out.println("@@@@@@@@@@iloveanusha"+count+ "@@@@@@@@@@@");
@@ -62,9 +66,18 @@ public class MainHomeActivity extends AppCompatActivity {
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+            public void onClick(View view) {/*
+                /*Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();*/
+
+                Intent sendIntent = new Intent(Intent.ACTION_VIEW);
+                sendIntent.setClassName("com.google.android.gm", "com.google.android.gm.ComposeActivityGmail");
+                sendIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"kashivivek@gmail.com"});
+                sendIntent.setData(Uri.parse("mailto:kashivivek@gmail.com"));
+                sendIntent.putExtra(Intent.EXTRA_SUBJECT, "Customer Feedback From " + MainHomeActivity.this.getString(R.string.user_name));
+                sendIntent.setType("plain/text");
+                sendIntent.putExtra(Intent.EXTRA_TEXT, "");
+                startActivity(sendIntent);
             }
         });
 
@@ -93,6 +106,10 @@ public class MainHomeActivity extends AppCompatActivity {
         alert.show();
     }
 
+    public void changeFragment(int item, boolean smoothScroll) {
+        mViewPager.setCurrentItem(item, smoothScroll);
+    }
+
     //Database Example
     public void floatingthing(View view) {
         Intent intent = new Intent(MainHomeActivity.this, MainHomeActivity.class);
@@ -104,6 +121,7 @@ public class MainHomeActivity extends AppCompatActivity {
         Intent intent = new Intent(MainHomeActivity.this, recentServicesActivity.class);
         startActivity(intent);
     }
+
 
     // MainActivity
     public void animateIntent(View view) {
@@ -136,14 +154,16 @@ public class MainHomeActivity extends AppCompatActivity {
 
     }
 
+    //Places
     public void openMaps(View view) {
 
         // Ordinary Intent for launching a new activity
-        //Intent intent = new Intent(MainHomeActivity.this, HomePlacesActivity.class);
-        Intent intent = new Intent(MainHomeActivity.this, ProductInfo.class);
+        Intent intent = new Intent(MainHomeActivity.this, HomePlacesActivity.class);
+        //Intent intent = new Intent(MainHomeActivity.this, ProductInfo.class);
         startActivity(intent);
     }
 
+    //Desired one
     public void openMapsMarker(View view) {
 
         // Ordinary Intent for launching a new activity
@@ -202,7 +222,15 @@ public class MainHomeActivity extends AppCompatActivity {
             View rootView = inflater.inflate(R.layout.fragment_main_home, container, false);
             TextView textView = (TextView) rootView.findViewById(R.id.section_label);
             /*textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));*/
+            TextView textView1 = (TextView) rootView.findViewById(R.id.intro_banner_text);
+            textView1.setOnClickListener(new View.OnClickListener() {
 
+                                             @Override
+                                             public void onClick(View v) {
+                                                 ((MainHomeActivity) getActivity()).changeFragment(1, true);
+                                             }
+                                         }
+            );
             return rootView;
         }
     }

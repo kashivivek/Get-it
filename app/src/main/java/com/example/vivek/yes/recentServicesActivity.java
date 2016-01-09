@@ -17,17 +17,20 @@ public class recentServicesActivity extends Activity {
     private RecyclerView mRecyclerView;
     private RecentAdapter mAdapter;
 
+    //private CustomRecyclerView mRecyclerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recent_services);
 
+        /*mRecyclerView = (CustomRecyclerView) findViewById(R.id.list);*/
         mRecyclerView = (RecyclerView) findViewById(R.id.list);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
 
         mAdapter = new RecentAdapter(RecentManager.getInstance().getrecents(), R.layout.row_recent, this);
+        mRecyclerView.setNestedScrollingEnabled(false);
         mRecyclerView.setAdapter(mAdapter);
     }
 

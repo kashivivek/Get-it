@@ -49,21 +49,16 @@ public class PagerTabStripV22 extends PagerTitleStripV22 {
     private static final int TAB_PADDING = 16; // dp
     private static final int TAB_SPACING = 32; // dp
     private static final int MIN_TEXT_SPACING = TAB_SPACING + TAB_PADDING * 2; // dp
-    private static final int FULL_UNDERLINE_HEIGHT = 1; // dp
-    private static final int MIN_STRIP_HEIGHT = 32; // dp
-
+    private static final int FULL_UNDERLINE_HEIGHT = 2; // dp
+    private static final int MIN_STRIP_HEIGHT = 34; // dp
+    private final Paint mTabPaint = new Paint();
+    private final Rect mTempRect = new Rect();
     private int mIndicatorColor;
     private int mIndicatorHeight;
-
     private int mMinPaddingBottom;
     private int mMinTextSpacing;
     private int mMinStripHeight;
-
     private int mTabPadding;
-
-    private final Paint mTabPaint = new Paint();
-    private final Rect mTempRect = new Rect();
-
     private int mTabAlpha = 0xFF;
 
     private boolean mDrawFullUnderline = false;
@@ -124,17 +119,6 @@ public class PagerTabStripV22 extends PagerTitleStripV22 {
     }
 
     /**
-     * Set the color of the tab indicator bar.
-     *
-     * @param color Color to set as an 0xRRGGBB value. The high byte (alpha) is ignored.
-     */
-    public void setTabIndicatorColor(@ColorInt int color) {
-        mIndicatorColor = color;
-        mTabPaint.setColor(mIndicatorColor);
-        invalidate();
-    }
-
-    /**
      * Set the color of the tab indicator bar from a color resource.
      *
      * @param resId Resource ID of a color resource to load
@@ -149,6 +133,17 @@ public class PagerTabStripV22 extends PagerTitleStripV22 {
     @ColorInt
     public int getTabIndicatorColor() {
         return mIndicatorColor;
+    }
+
+    /**
+     * Set the color of the tab indicator bar.
+     *
+     * @param color Color to set as an 0xRRGGBB value. The high byte (alpha) is ignored.
+     */
+    public void setTabIndicatorColor(@ColorInt int color) {
+        mIndicatorColor = color;
+        mTabPaint.setColor(mIndicatorColor);
+        invalidate();
     }
 
     @Override
@@ -192,6 +187,17 @@ public class PagerTabStripV22 extends PagerTitleStripV22 {
     }
 
     /**
+     * Return whether or not this tab strip will draw a full-width underline.
+     * This defaults to true if no background is set.
+     *
+     * @return true if this tab strip will draw a full-width underline in the
+     * current tab indicator color.
+     */
+    public boolean getDrawFullUnderline() {
+        return mDrawFullUnderline;
+    }
+
+    /**
      * Set whether this tab strip should draw a full-width underline in the
      * current tab indicator color.
      *
@@ -201,17 +207,6 @@ public class PagerTabStripV22 extends PagerTitleStripV22 {
         mDrawFullUnderline = drawFull;
         mDrawFullUnderlineSet = true;
         invalidate();
-    }
-
-    /**
-     * Return whether or not this tab strip will draw a full-width underline.
-     * This defaults to true if no background is set.
-     *
-     * @return true if this tab strip will draw a full-width underline in the
-     * current tab indicator color.
-     */
-    public boolean getDrawFullUnderline() {
-        return mDrawFullUnderline;
     }
 
     @Override

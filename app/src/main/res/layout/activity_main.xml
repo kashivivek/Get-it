@@ -54,9 +54,10 @@
         android:layout_centerHorizontal="true"
         android:layout_margin="5dp"
         android:background="@drawable/ripple"
-        android:backgroundTint="#00BFA5"
+        android:backgroundTint="#42aaaf"
         android:elevation="10dp"
         android:text="@string/label_loginbutton"
+        android:textColor="#fff"
         />
 
    <!-- <Button
