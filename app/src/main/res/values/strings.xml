@@ -159,4 +159,5 @@ Imperdiet id felis lectus accumsan class, neque nullam quam, adipiscing turpis v
     <string name="age_place">22 M, Hyderabad</string>
     <string name="title_activity_recent_services">Recent Services</string>
     <string name="intro_text">Slide Right to Start</string>
+    <string name="no_network_connection_toast">No Connection</string>
 </resources>

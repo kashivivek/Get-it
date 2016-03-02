@@ -46,7 +46,7 @@ public class Records {
 
     @Override
     public String toString() {
-        return "Book [id=" + service_date + ", name=" + name + ", category=" + category
+        return "Records [id=" + service_date + ", name=" + name + ", category=" + category
                 + "]";
     }
 }

@@ -58,10 +58,48 @@
 
     <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:card_view="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/intro_card"
+        android:id="@+id/recent_activities_card"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_below="@+id/profile_pic"
+        android:layout_margin="5dp"
+        android:orientation="horizontal"
+        card_view:cardCornerRadius="5dp">
+
+            <ImageView
+                android:id="@+id/recentImage"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_centerInParent="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/recent_services"
+                android:tint="@color/photo_tint" />
+
+            <TextView
+                android:id="@+id/recentName"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_centerInParent="true"
+                android:background="?android:selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:text="@string/title_activity_recent_services"
+                android:textColor="@android:color/white"
+                android:textSize="24sp" />
+        <!--android:onClick="openRecentServices"-->
+
+
+
+    </android.support.v7.widget.CardView>
+
+
+    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/intro_card"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@+id/recent_activities_card"
         android:layout_margin="5dp"
         android:orientation="horizontal"
         card_view:cardCornerRadius="5dp">
@@ -76,7 +114,6 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:scaleType="centerCrop"
-                android:src="@drawable/orange_arrow"
                 android:tint="@color/photo_tint" />
 
             <TextView
@@ -89,47 +126,6 @@
                 android:focusable="true"
                 android:gravity="center"
                 android:text="@string/intro_text"
-                android:textColor="@android:color/white"
-                android:textSize="24sp" />
-
-        </RelativeLayout>
-
-    </android.support.v7.widget.CardView>
-
-    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:card_view="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/recent_card"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_below="@+id/intro_card"
-        android:layout_margin="5dp"
-        android:orientation="horizontal"
-        card_view:cardCornerRadius="5dp">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageView
-                android:id="@+id/recentImage"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_centerInParent="true"
-                android:scaleType="centerCrop"
-                android:src="@drawable/profile_pic1"
-                android:tint="@color/photo_tint" />
-
-            <TextView
-                android:id="@+id/recentName"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_centerInParent="true"
-                android:background="?android:selectableItemBackground"
-                android:clickable="true"
-                android:focusable="true"
-                android:gravity="center"
-                android:onClick="openRecentServices"
-                android:text="@string/title_activity_recent_services"
                 android:textColor="@android:color/white"
                 android:textSize="24sp" />
 
