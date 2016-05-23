@@ -315,7 +315,7 @@ public class MainHomeActivity extends AppCompatActivity {
             //Bitmap bMap = BitmapFactory.decodeResource(getResources(), R.drawable.orange_arrow);
             //image.setImageBitmap(bMap);
 
-            loadBitmap(R.drawable.orange_arrow, image);
+
 
             TextView textView1 = (TextView) rootView.findViewById(R.id.intro_banner_text);
             textView1.setOnClickListener(new View.OnClickListener() {
