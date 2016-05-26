@@ -15,6 +15,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 
 import com.cocosw.bottomsheet.BottomSheet;
+import com.google.android.gms.analytics.ecommerce.Product;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -98,7 +99,14 @@ public class HomeActivity extends FragmentActivity implements OnMapReadyCallback
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         switch (which) {
-                            case R.id.help:
+
+                            case R.id.book_service:
+                                Intent intent1 = new Intent(HomeActivity.this, ProductActivity.class);
+                                startActivity(intent1);
+                                /*Toast.makeText(HomeActivity.this, "Sagar demo", Toast.LENGTH_SHORT).show();*/
+                                break;
+
+                            case R.id.Profile:
                                 Intent intent = new Intent(HomeActivity.this, ProductActivity.class);
                                 startActivity(intent);
                                 /*Toast.makeText(HomeActivity.this, "Sagar demo", Toast.LENGTH_SHORT).show();*/

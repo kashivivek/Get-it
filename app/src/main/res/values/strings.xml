@@ -45,10 +45,9 @@
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="title_activity_time_pass">Profile Picture</string>
     <string name="user_name">Kashi Vivek Budda</string>
-    <string name="share">share</string>
-    <string name="upload">upload</string>
-    <string name="call">call</string>
-    <string name="help">help</string>
+    <string name="book_service">Book Service</string>
+    <string name="call">call Service</string>
+    <string name="profile">profile</string>
     <string name="title_activity_product">Product Description</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
@@ -160,4 +159,5 @@ Imperdiet id felis lectus accumsan class, neque nullam quam, adipiscing turpis v
     <string name="title_activity_recent_services">Recent Services</string>
     <string name="intro_text">Slide Right to Start</string>
     <string name="no_network_connection_toast">No Connection</string>
+    <string name="title_activity_booking">Book Service</string>
 </resources>

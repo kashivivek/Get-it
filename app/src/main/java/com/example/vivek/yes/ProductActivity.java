@@ -21,7 +21,7 @@ public class ProductActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product2);
         image = (ImageView) findViewById(R.id.image);
-        image.setImageResource(R.drawable.pic2);
+        image.setImageResource(R.drawable.anusha);
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         collapsingToolbarLayout.setTitle("Product");
@@ -50,20 +50,5 @@ public class ProductActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.pic1) {
-            image.setImageResource(R.drawable.pic);
-            setPalette();
-            return true;
-        }
-        if (id == R.id.pic2) {
-            image.setImageResource(R.drawable.pic2);
-            setPalette();
-            return true;
-        }
 
-        return super.onOptionsItemSelected(item);
-    }
 }

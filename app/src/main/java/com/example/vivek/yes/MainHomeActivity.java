@@ -408,7 +408,7 @@ public class MainHomeActivity extends AppCompatActivity {
         public FoodFragment() {
         }
 
-        /**
+        /**<code></code>
          * Returns a new instance of this fragment for the given section
          * number.
          */
