@@ -160,4 +160,11 @@ Imperdiet id felis lectus accumsan class, neque nullam quam, adipiscing turpis v
     <string name="intro_text">Slide Right to Start</string>
     <string name="no_network_connection_toast">No Connection</string>
     <string name="title_activity_booking">Book Service</string>
+    <string name="name_label">Name</string>
+    <string name="typeofservice_label">Type of Service</string>
+    <string name="product_servicename">Food</string>
+    <string name="product_name">Anusha Neeli</string>
+    <string name="phone_label">Phone</string>
+    <string name="phone">4086502488</string>
+
 </resources>
