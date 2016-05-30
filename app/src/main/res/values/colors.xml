@@ -21,5 +21,12 @@
     <color name="photo_tint">#88101010</color>
     <color name="text_primary">#D9FFFFFF</color>
     <color name="text_secondary">#D9000000</color>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="icons1">#6e6e6e</color>
+    <color name="devider">#ebebeb</color>
+    <color name="text">#223038</color>
+    <color name="subtext">#a3a4a7</color>
 
 </resources>

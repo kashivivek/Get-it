@@ -4,7 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="fill_parent"
-    android:fitsSystemWindows="true">
+    android:fitsSystemWindows="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar_layout"
@@ -34,7 +36,7 @@
                 android:contentDescription="" />
 
             <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar"
+                android:id="@+id/toolbar1"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
@@ -52,7 +54,7 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
 
-        <android.support.v7.widget.CardView
+        <!--<android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
@@ -64,7 +66,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <!--<TextView
+                &lt;!&ndash;<TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="30dp"
@@ -79,7 +81,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="30dp"
                     android:text="@string/lorem_ipsum"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body1" />-->
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1" />&ndash;&gt;
                 <TextView
                     android:id="@+id/name_label"
                     android:layout_width="match_parent"
@@ -139,7 +141,473 @@
 
             </LinearLayout>
 
-        </android.support.v7.widget.CardView>
+        </android.support.v7.widget.CardView>-->
+
+
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context="ws.wolfsoft.livo.MainActivity"
+            android:background="#fff"
+            >
+
+
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="45dp"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+
+
+
+
+
+
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@+id/linear"
+
+                        >
+
+                        <!--<ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="250dp"
+                            android:src="@drawable/bg1"
+                            android:scaleType="centerCrop"
+                            android:layout_marginBottom="5dp"
+                            />-->
+
+
+
+
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:gravity="top"
+                            android:padding="16dp">
+
+                            <!--<ImageView-->
+
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:src="@drawable/menu"-->
+                            <!--android:layout_gravity="left"-->
+                            <!--/>-->
+
+
+
+
+
+
+
+                        </LinearLayout>
+
+
+
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linear"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_above="@+id/pay">
+
+
+
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            >
+
+
+                            <customfonts.MyTextView
+                                android:layout_weight="1"
+                                android:id="@+id/checkin"
+                                android:textSize="16dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Check  in"
+                                android:textColor="@color/text"
+                                android:background="#0000"
+                                android:padding="16dp"
+                                android:gravity="left"
+                                />
+
+
+                            <customfonts.MyTextView
+                                android:layout_weight="0.5"
+                                android:id="@+id/checkintime"
+                                android:textSize="16dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Monday 10 March, 2:00 PM"
+                                android:textColor="@color/subtext"
+                                android:background="#0000"
+                                android:padding="16dp"
+                                android:gravity="right"
+                                />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/devider"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="16dp"
+                            />
+
+
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            >
+
+
+
+                            <customfonts.MyTextView
+                                android:layout_weight="1"
+                                android:id="@+id/checkout"
+                                android:textSize="16dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Check  out"
+                                android:textColor="@color/text"
+                                android:background="#0000"
+                                android:padding="16dp"
+                                android:gravity="left"/>
+
+
+                            <customfonts.MyTextView
+                                android:layout_weight="0.6"
+                                android:id="@+id/checkouttime"
+                                android:textSize="16dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Friday 19 March, 11:00 AM"
+                                android:textColor="@color/subtext"
+                                android:background="#0000"
+                                android:padding="16dp"
+                                android:gravity="right"
+                                />
+                        </LinearLayout>
+
+
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/devider"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="16dp"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            >
+
+
+                            <customfonts.MyTextView
+                                android:layout_weight="1"
+                                android:id="@+id/totalprice"
+                                android:textSize="16dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Total Price"
+                                android:textColor="@color/text"
+                                android:background="#0000"
+                                android:padding="16dp"
+                                android:gravity="left"
+                                />
+
+                            <customfonts.MyTextView
+                                android:layout_weight="1"
+                                android:id="@+id/tv"
+                                android:textSize="16dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="&#x20B9; 3200"
+                                android:textColor="@color/subtext"
+                                android:background="#0000"
+                                android:padding="16dp"
+                                android:gravity="right"
+                                />
+                        </LinearLayout>
+
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/devider"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="16dp"/>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            >
+
+
+                            <customfonts.MyTextView
+                                android:layout_weight="1"
+                                android:id="@+id/conditions"
+                                android:textSize="16dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Booking Conditions"
+                                android:textColor="@color/text"
+                                android:background="#0000"
+                                android:padding="16dp"
+                                android:gravity="left"
+                                android:drawableRight="@drawable/arrow"
+                                />
+
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/devider"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="16dp"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            >
+
+
+                            <customfonts.MyTextView
+                                android:layout_weight="1"
+                                android:id="@+id/termsconditions"
+                                android:textSize="16dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Terms and Conditions"
+                                android:textColor="@color/text"
+                                android:background="#0000"
+                                android:padding="16dp"
+                                android:gravity="left"
+                                android:drawableRight="@drawable/arrow"
+                                />
+
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/devider"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="16dp"/>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            >
+
+
+                            <customfonts.MyTextView
+                                android:layout_weight="1"
+                                android:id="@+id/privacystatement"
+                                android:textSize="16dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Privacy statement"
+                                android:textColor="@color/text"
+                                android:background="#0000"
+                                android:padding="16dp"
+                                android:gravity="left"
+                                android:drawableRight="@drawable/arrow"
+                                />
+
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/devider"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="16dp"/>
+
+                    </LinearLayout>
+
+
+
+                    <!--***************************-->
+
+
+                    <!--****NAME TEXT****-->
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingTop="16dp">
+
+                        <TextView
+                            android:id="@+id/info"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Personal Information"
+                            android:textColor="#333333"
+                            android:layout_marginLeft="16dp"
+                            android:textSize="16dp"
+                            />
+
+
+
+                        <LinearLayout
+                            android:layout_marginTop="16dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginRight="16dp"
+                            android:layout_marginLeft="16dp"
+                            android:background="#f7f7f9">
+
+                            <customfonts.MyEditText
+                                android:id="@+id/fullname"
+                                android:layout_height="match_parent"
+                                android:layout_width="match_parent"
+                                android:textColorHint="@color/subtext"
+                                android:maxLines="1"
+                                android:hint="Full Name"
+                                android:inputType="text"
+                                android:layout_marginTop="11dp"
+                                android:layout_marginBottom="11dp"
+                                android:layout_marginLeft="16dp"
+
+
+                                android:background="#00000000"
+                                />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_marginTop="16dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginRight="16dp"
+                            android:layout_marginLeft="16dp"
+                            android:background="#f7f7f9">
+
+                            <customfonts.MyEditText
+                                android:id="@+id/email"
+                                android:layout_height="match_parent"
+                                android:layout_width="match_parent"
+                                android:textColorHint="@color/subtext"
+                                android:maxLines="1"
+                                android:hint="Email"
+                                android:inputType="text"
+                                android:layout_marginTop="11dp"
+                                android:layout_marginBottom="11dp"
+                                android:layout_marginLeft="16dp"
+
+
+                                android:background="#00000000"
+                                />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_marginTop="16dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginRight="16dp"
+                            android:layout_marginLeft="16dp"
+                            android:background="#f7f7f9"
+                            android:layout_marginBottom="21dp">
+
+                            <customfonts.MyEditText
+                                android:id="@+id/phone"
+                                android:layout_height="match_parent"
+                                android:layout_width="match_parent"
+                                android:textColorHint="@color/subtext"
+                                android:maxLines="1"
+                                android:hint="Phone number"
+                                android:inputType="number"
+                                android:layout_marginTop="11dp"
+                                android:layout_marginBottom="11dp"
+                                android:layout_marginLeft="16dp"
+                                android:background="#00000000"
+                                />
+
+
+                        </LinearLayout>
+
+
+
+
+                    </LinearLayout>
+
+
+                    <!--****Your name TEXT****-->
+
+
+
+
+
+
+
+
+
+
+
+                </LinearLayout>
+            </ScrollView>
+
+            <TextView
+                android:id="@+id/pay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#04bebd"
+                android:text="Pay  &#x20B9; 3200"
+                android:textSize="20dp"
+                android:textColor="#fff"
+                android:gravity="center"
+                android:padding="12dp"
+                android:layout_alignParentBottom="true"
+                />
+
+
+
+
+
+        </RelativeLayout>
     </android.support.v4.widget.NestedScrollView>
 
     <android.support.design.widget.FloatingActionButton
