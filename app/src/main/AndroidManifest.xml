@@ -62,7 +62,8 @@
         <activity
             android:name=".ProductActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            />
         <activity
             android:name=".ProductInfo"
             android:label="@string/title_activity_product_info"

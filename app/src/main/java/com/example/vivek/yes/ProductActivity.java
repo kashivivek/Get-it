@@ -22,7 +22,7 @@ public class ProductActivity extends AppCompatActivity {
         setContentView(R.layout.activity_product2);
         image = (ImageView) findViewById(R.id.image);
         image.setImageResource(R.drawable.anusha);
-        setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
+        setSupportActionBar((Toolbar) findViewById(R.id.toolbar1));
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         collapsingToolbarLayout.setTitle("Product");
         collapsingToolbarLayout.setExpandedTitleColor(getResources().getColor(android.R.color.transparent));

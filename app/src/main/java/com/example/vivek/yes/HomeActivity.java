@@ -2,6 +2,7 @@ package com.example.vivek.yes;
 
 import android.Manifest;
 import android.annotation.TargetApi;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -35,14 +36,37 @@ public class HomeActivity extends FragmentActivity implements OnMapReadyCallback
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        // Assume thisActivity is the current activity
-       /* int permissionCheck = ContextCompat.checkSelfPermission(HomeActivity.this,
-                Manifest.permission.LOCATION_HARDWARE);
-            System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"+permissionCheck);*/
-        // Here, thisActivity is the current activity
+       statusCheck();
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+    }
+    public void statusCheck()
+    {
+        final LocationManager manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+
+        if ( !manager.isProviderEnabled( LocationManager.GPS_PROVIDER ) ) {
+            buildAlertMessageNoGps();
+        }
+    }
+
+    private void buildAlertMessageNoGps() {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Your GPS seems to be disabled, do you want to enable it?")
+                .setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(final DialogInterface dialog,  final int id) {
+                        startActivity(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(final DialogInterface dialog, final int id) {
+                        dialog.cancel();
+                    }
+                });
+        final AlertDialog alert = builder.create();
+        alert.show();
     }
 
     @TargetApi(Build.VERSION_CODES.M)
@@ -95,7 +119,7 @@ public class HomeActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public boolean onMarkerClick(Marker arg0) {
 
-                new BottomSheet.Builder(HomeActivity.this).title("title").sheet(R.menu.menu_home).listener(new DialogInterface.OnClickListener() {
+                new BottomSheet.Builder(HomeActivity.this).title("fdsn").sheet(R.menu.menu_home).listener(new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         switch (which) {
@@ -128,5 +152,4 @@ public class HomeActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
 }
-
 

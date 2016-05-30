@@ -14,13 +14,13 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:onClick="animateIntent"
-        android:src="@drawable/profile_pic1"
+        android:src="@drawable/user"
         android:transitionName="profilepic"
         app:border_color="#EEEEEE"
         app:border_width="4dp"
         app:shadow="true" />
 
-    <TextView
+    <customfonts.MyTextView
         android:id="@+id/display_uname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -31,7 +31,7 @@
         android:textSize="24dp"
         android:textStyle="bold" />
 
-    <TextView
+    <customfonts.MyTextView
         android:id="@+id/Age_Place"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -75,7 +75,7 @@
                 android:src="@drawable/recent_services"
                 android:tint="@color/photo_tint" />
 
-            <TextView
+            <customfonts.MyTextView
                 android:id="@+id/recentName"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
@@ -84,6 +84,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:gravity="center"
+                android:onClick="openRecentServices"
                 android:text="@string/title_activity_recent_services"
                 android:textColor="@android:color/white"
                 android:textSize="24sp" />
@@ -117,7 +118,7 @@
                 android:tint="@color/photo_tint"
                 android:src="@drawable/orange_arrow"/>
 
-            <TextView
+            <customfonts.MyTextView
                 android:id="@+id/intro_banner_text"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
