@@ -104,7 +104,18 @@ public class HomeActivity extends FragmentActivity implements OnMapReadyCallback
 
         BitmapDescriptor icon = BitmapDescriptorFactory.fromResource(R.drawable.u);
         LatLng india_home = new LatLng(17.421347, 78.492047);
+        LatLng andra_bank = new LatLng(17.424506, 78.490533);
+        LatLng school = new LatLng(17.423768, 78.492239);
+        LatLng po = new LatLng(17.419704, 78.495178);
+        LatLng temple = new LatLng(17.419787, 78.491166);
+
+
         map.addMarker(new MarkerOptions().position(india_home).title("india_home").icon(icon));
+        map.addMarker(new MarkerOptions().position(school).title("school").icon(icon));
+        map.addMarker(new MarkerOptions().position(andra_bank).title("andra_bank").icon(icon));
+        map.addMarker(new MarkerOptions().position(po).title("po").icon(icon));
+        map.addMarker(new MarkerOptions().position(temple).title("temple").icon(icon));
+
         map.moveCamera(CameraUpdateFactory.newLatLng(india_home));
 
         CameraPosition cameraPosition = new CameraPosition.Builder()

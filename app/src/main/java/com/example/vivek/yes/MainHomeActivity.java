@@ -88,7 +88,7 @@ public class MainHomeActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setTitle("Start your hunt here!");
+        setTitle("sLiDe rIgHt tO hUnT!!!");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_home);
         session = new SessionManager(getApplicationContext());
@@ -398,6 +398,38 @@ public class MainHomeActivity extends AppCompatActivity {
         }
     }
 
+    public static class LifeStyleFragment extends Fragment {
+        /**
+         * The fragment argument representing the section number for this
+         * fragment.
+         */
+        private static final String ARG_SECTION_NUMBER = "section_number";
+
+        public LifeStyleFragment() {
+        }
+
+        /**
+         * Returns a new instance of this fragment for the given section
+         * number.
+         */
+        public static LifeStyleFragment newInstance(int sectionNumber) {
+            LifeStyleFragment fragment = new LifeStyleFragment();
+            Bundle args = new Bundle();
+            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
+            fragment.setArguments(args);
+            return fragment;
+        }
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+            View rootView = inflater.inflate(R.layout.fragment_lifestyle, container, false);
+            /*TextView textView = (TextView) rootView.findViewById(R.id.section_label);
+            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));*/
+            return rootView;
+        }
+    }
+
     public static class FoodFragment extends Fragment {
         /**
          * The fragment argument representing the section number for this
@@ -482,14 +514,19 @@ public class MainHomeActivity extends AppCompatActivity {
                     // Main Home Page fragment activity
                     return MainHomeFragment.newInstance(position + 1);
                 case 1:
-                    // Food fragment activity
-                    return FoodFragment.newInstance(position + 1);
-                case 2:
-                    // Groceries fragment activity
-                    return GroceriesFragment.newInstance(position + 1);
-                case 3:
-                    //House hold Activity
+                    // House Hold Works fragment activity
                     return HouseholdFragment.newInstance(position + 1);
+                case 2:
+                    // Life Style fragment activity
+                    return LifeStyleFragment.newInstance(position + 1);
+
+                case 3:
+                    //Groceries Activity
+                    return GroceriesFragment.newInstance(position + 1);
+
+                case 4:
+                    //Food Activity
+                    return FoodFragment.newInstance(position + 1);
             }
 
             return null;
@@ -498,7 +535,7 @@ public class MainHomeActivity extends AppCompatActivity {
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 4;
+            return 5;
         }
 
 
@@ -506,13 +543,15 @@ public class MainHomeActivity extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "Home Page";
+                    return "hOmE pAgE";
                 case 1:
-                    return "Food";
+                    return "hOuSe hOLd wOrKs";
                 case 2:
-                    return "Groceries";
+                    return "LiFe sTyLe";
                 case 3:
-                    return "House Hold Activites";
+                    return "gRoCeRiEs";
+                case 4:
+                    return "FoOd";
             }
             return super.getPageTitle(position);
         }

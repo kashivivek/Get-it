@@ -8,6 +8,7 @@
     import android.content.Intent;
     import android.content.SharedPreferences;
     import android.content.pm.PackageManager;
+    import android.database.Cursor;
     import android.location.LocationManager;
     import android.os.Bundle;
     import android.support.v4.app.ActivityCompat;
@@ -19,20 +20,34 @@
     import android.widget.EditText;
     import android.widget.Toast;
 
+    import com.example.vivek.db.DatabaseCopier;
     import com.example.vivek.utils.SessionManager;
+
+    import java.io.IOException;
 
     public class MainActivity extends Activity {
         public static final String PREFS_NAME = "MyPrefs";
         DBHelper db = new DBHelper(this);
+        //DatabaseCopier dbc = new DatabaseCopier(getApplication().getApplicationContext());
         SharedPreferences sharedpreferences;
         SessionManager session;
+        Context urContext;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         statusCheck();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        db.onUpgrade(db.getWritableDatabase(), 1, 2);
-        db.generateTable();
+        /*try {
+            dbc.createDataBase();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
+       final TestAdapter mDbHelper = new TestAdapter(getApplicationContext());
+        mDbHelper.createDatabase();
+        mDbHelper.open();
+
+       /* db.onUpgrade(db.getWritableDatabase(), 1, 2);
+        db.generateTable();*/
         session = new SessionManager(getApplicationContext());
         Button login_button= (Button) findViewById(R.id.submit_button);
         login_button.setOnClickListener(new View.OnClickListener() {
@@ -42,11 +57,16 @@
                                                 EditText text_uname = (EditText) findViewById(R.id.username);
                                                 EditText text_pwd = (EditText) findViewById(R.id.password);
                                                 String uname = text_uname.getText().toString();
+                                                System.out.print("@@MAin Activity"+uname);
                                                 String pwd = text_pwd.getText().toString();
+                                                System.out.print("@@MAin Activity"+pwd);
+                                                String users= "users";
                                                 if (uname.trim().length() > 0 && pwd.trim().length() > 0) {
-                                                    if (db.validateUser(uname, pwd)) {
+                                                    if (mDbHelper.validateUser(uname, pwd,users)) {
+                                                        System.out.println("entered validate user main activity");
                                                         session.createLoginSession("uname", "pwd");
                                                         Intent intent = new Intent(MainActivity.this, MainHomeActivity.class);
+                                                       // mDbHelper.close();
                                                         startActivity(intent);
                                                     } else
                                                         Toast.makeText(MainActivity.this, "Login Failed, Please use valid credentials picheswar!!", Toast.LENGTH_SHORT).show();
