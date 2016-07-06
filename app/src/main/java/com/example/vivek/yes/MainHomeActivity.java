@@ -28,6 +28,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -128,6 +129,8 @@ public class MainHomeActivity extends AppCompatActivity {
             mViewPager.setTransitionName("profile");
         }
 
+
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -148,6 +151,8 @@ public class MainHomeActivity extends AppCompatActivity {
 
     }
 
+
+
     //Bitmap methods
     public void addBitmapToMemoryCache(String key, Bitmap bitmap) {
         if (getBitmapFromMemCache(key) == null) {
@@ -155,18 +160,6 @@ public class MainHomeActivity extends AppCompatActivity {
         }
     }
 
-    public void loadBitmap(int resId, ImageView mImageView) {
-        final String imageKey = String.valueOf(resId);
-
-        final Bitmap bitmap = getBitmapFromMemCache(imageKey);
-        if (bitmap != null) {
-            mImageView.setImageBitmap(bitmap);
-        } else {
-            mImageView.setImageResource(R.drawable.orange_arrow);
-            BitmapWorkerTask task = new BitmapWorkerTask(mImageView);
-            task.execute(resId);
-        }
-    }
 
     public Bitmap getBitmapFromMemCache(String key) {
         return mMemoryCache.get(key);
@@ -247,7 +240,7 @@ public class MainHomeActivity extends AppCompatActivity {
     public void openMaps(View view) {
 
         // Ordinary Intent for launching a new activity
-        Intent intent = new Intent(MainHomeActivity.this, HomePlacesActivity.class);
+        Intent intent = new Intent(MainHomeActivity.this, HomeActivity.class);
         //Intent intent = new Intent(MainHomeActivity.this, ProductInfo.class);
         startActivity(intent);
     }
@@ -255,8 +248,11 @@ public class MainHomeActivity extends AppCompatActivity {
     //Desired one
     public void openMapsMarker(View view) {
 
+        String tag= (String) view.getTag();
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~"+tag+ "@@@@@@@@@@@");
         // Ordinary Intent for launching a new activity
         Intent intent = new Intent(MainHomeActivity.this, HomeActivity.class);
+        intent.putExtra(tag,tag);
         startActivity(intent);
     }
 

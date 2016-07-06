@@ -34,7 +34,9 @@
         Context urContext;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        statusCheck();
+
+        buildAlertMessageNoGps();
+        super.onCreate(savedInstanceState);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         /*try {
@@ -76,13 +78,15 @@
                                         }
         );
     }
-        public void statusCheck()
+        public boolean statusCheck()
         {
             final LocationManager manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
             if ( !manager.isProviderEnabled( LocationManager.GPS_PROVIDER ) ) {
                 buildAlertMessageNoGps();
+                return true;
             }
+            return false;
         }
 
         @Override

@@ -53,8 +53,9 @@
                         android:clickable="true"
                         android:focusable="true"
                         android:gravity="center"
+                        android:tag="@string/tag_electrical"
                         android:onClick="openMapsMarker"
-                        android:text="Electrical"
+                        android:text="@string/category_electrical"
                         android:textColor="@android:color/white"
                         android:textSize="24sp" />
 
@@ -86,7 +87,7 @@
                         android:tint="@color/photo_tint" />
 
                     <customfonts.MyTextView
-                        android:id="@+id/recentName2"
+                        android:id="@+id/plumbing_text_id"
                         android:layout_width="match_parent"
                         android:layout_height="100dp"
                         android:layout_centerInParent="true"
@@ -94,8 +95,9 @@
                         android:clickable="true"
                         android:focusable="true"
                         android:gravity="center"
+                        android:tag="@string/tag_plumbing"
                         android:onClick="openMapsMarker"
-                        android:text="Plumbing"
+                        android:text="@string/category_plumbing"
                         android:textColor="@android:color/white"
                         android:textSize="24sp" />
 
@@ -134,6 +136,7 @@
                         android:clickable="true"
                         android:focusable="true"
                         android:gravity="center"
+                        android:tag="@string/tag_carpenter"
                         android:onClick="openMapsMarker"
                         android:text="Carpenters"
                         android:textColor="@android:color/white"
@@ -175,6 +178,7 @@
                         android:clickable="true"
                         android:focusable="true"
                         android:gravity="center"
+                        android:tag="@string/tag_cleaning"
                         android:onClick="openMapsMarker"
                         android:text="Cleaning"
                         android:textColor="@android:color/white"
@@ -215,6 +219,7 @@
                         android:clickable="true"
                         android:focusable="true"
                         android:gravity="center"
+                        android:tag="@string/tag_repair"
                         android:onClick="openMapsMarker"
                         android:text="Repairing works"
                         android:textColor="@android:color/white"
@@ -256,6 +261,7 @@
                         android:clickable="true"
                         android:focusable="true"
                         android:gravity="center"
+                        android:tag="@string/tag_getit"
                         android:onClick="openMapsMarker"
                         android:text="Get-it @ Home"
                         android:textColor="@android:color/white"

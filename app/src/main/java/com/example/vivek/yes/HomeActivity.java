@@ -12,6 +12,7 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.MainThread;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 
@@ -73,7 +74,13 @@ public class HomeActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap map) {
         // Add a marker in Sydney, Australia, and move the camera.
-        map.setMyLocationEnabled(true);
+        try{
+            map.setMyLocationEnabled(true);
+        }
+        catch (Exception e){
+            statusCheck();
+        }
+
         map.getUiSettings().setCompassEnabled(true);
         LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         Criteria criteria = new Criteria();
@@ -102,12 +109,30 @@ public class HomeActivity extends FragmentActivity implements OnMapReadyCallback
                     .build();                   // Creates a CameraPosition from the builder
             map.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));*/
 
+        Bundle extras = getIntent().getExtras();
+        String tag=null;
+        if (extras != null) {
+             tag = extras.getString("tag");
+            //The key argument here must match that used in the other activity
+        }
+        System.out.print(tag+"@$#%^!*#^$%&@*!(#^$%@*");
+        // very important
+        /*String jam=null;
+
+
+        String[] parts = jam.split(":");//houshold:electrician
+        double lon =Double.parseDouble(parts[0]);
+        double lat =Double.parseDouble(parts[1]);
+        LatLng xyz = new LatLng(lat,lon);*/
+        System.out.print("@$#%^!*#^$%&@*!(#^$%@*");
+
         BitmapDescriptor icon = BitmapDescriptorFactory.fromResource(R.drawable.u);
         LatLng india_home = new LatLng(17.421347, 78.492047);
         LatLng andra_bank = new LatLng(17.424506, 78.490533);
         LatLng school = new LatLng(17.423768, 78.492239);
         LatLng po = new LatLng(17.419704, 78.495178);
         LatLng temple = new LatLng(17.419787, 78.491166);
+
 
 
         map.addMarker(new MarkerOptions().position(india_home).title("india_home").icon(icon));

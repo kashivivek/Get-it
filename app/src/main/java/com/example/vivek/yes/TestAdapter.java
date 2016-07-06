@@ -3,6 +3,8 @@ package com.example.vivek.yes;
 /**
  * Created by kashivivek on 13-06-2016.
  */import java.io.IOException;
+import java.util.ArrayList;
+
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -79,7 +81,40 @@ public class TestAdapter
             throw mSQLException;
         }
     }*/
-   public boolean validateUser(String pref_username, String pref_password, String table_NAME_user) {
+
+
+    public ArrayList getCordinates(String category){
+
+
+        String[] parts = category.split(":");//houshold:electrician
+        String type = parts[1]; // electrician
+        String table_name=parts[0]+"_products_table";//household_products_table
+
+        String query = "SELECT  * FROM " + table_name+ " where type = "+type+"'";
+        Cursor cursor = mDb.rawQuery(query, null);
+        ArrayList al = new ArrayList();
+        String lattitude = null;
+        String longitude = null;
+        if (cursor != null) {
+
+            if (cursor.moveToFirst()) {
+
+                do {
+                    lattitude = cursor.getString(6);
+                    longitude = cursor.getString(3);
+                    String temp=longitude+","+lattitude;
+                    al.add(temp);
+
+                } while (cursor.moveToNext());
+            }
+
+        }
+
+        return al;
+    }
+
+
+    public boolean validateUser(String pref_username, String pref_password, String table_NAME_user) {
 
        // select book query
        boolean result =false;

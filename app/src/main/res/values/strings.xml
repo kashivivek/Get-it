@@ -166,5 +166,31 @@ Imperdiet id felis lectus accumsan class, neque nullam quam, adipiscing turpis v
     <string name="product_name">Anusha Neeli</string>
     <string name="phone_label">Phone</string>
     <string name="phone">4086502488</string>
+    <string name="category_electrical">Electrical</string>
+    <string name="category_plumbing">Plumbing</string>
+    <string name="category_carpenter">carpenter</string>
+    <string name="tag_carpenter">household:carpenter</string>
+    <string name="tag_electrical">household:electrical</string>
+    <string name="tag_plumbing">household:plumbing</string>
+    <string name="tag_cleaning">household:cleaning</string>
+    <string name="tag_repair">household:repair</string>
+    <string name="tag_getit">household:getit</string>
+    <string name="tag_event">lifestyle:event</string>
+    <string name="tag_webdesigner">lifestyle:webdesigner</string>
+    <string name="tag_photographer">lifestyle:photographer</string>
+    <string name="tag_packers">lifestyle:packers</string>
+    <string name="tag_kirana">groceries:kirana</string>
+    <string name="tag_hardware">groceries:hardware</string>
+    <string name="tag_pharmacy">groceries:pharmacy</string>
+    <string name="tag_biryani">food:biryani</string>
+    <string name="tag_restaurants">food:biryani</string>
+    <string name="tag_bakers">food:bakers</string>
+    <string name="tag_chaat">food:chaat</string>
+
+
+
+
+
+
 
 </resources>
