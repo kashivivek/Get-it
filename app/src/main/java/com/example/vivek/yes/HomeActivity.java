@@ -236,7 +236,7 @@ public class HomeActivity extends FragmentActivity implements OnMapReadyCallback
                             System.out.println("%%%% "+lat+","+lon);
                             LatLng x= new LatLng(lat,lon);
 
-                            Marker marker = map.addMarker(new MarkerOptions().position(x).icon(BitmapDescriptorFactory.fromResource(R.drawable.u)));
+                            Marker marker = map.addMarker(new MarkerOptions().title(bean.getName()).position(x).icon(BitmapDescriptorFactory.fromResource(R.drawable.u)));
                             System.out.println("%%%%%markers are done");
                             //Add Marker to Hashmap
                             hashMapMarker.put(marker,bean);
@@ -255,19 +255,35 @@ public class HomeActivity extends FragmentActivity implements OnMapReadyCallback
                     e.printStackTrace();
                 }
 
+
                 map.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
 
                     @Override
                     public void onInfoWindowClick(Marker position)
                     {
                         LatLngBean bean=hashMapMarker.get(position);
-                        Toast.makeText(getApplicationContext(), bean.getName(),Toast.LENGTH_SHORT).show();
 
+                        new BottomSheet.Builder(HomeActivity.this).title(bean.getName()).sheet(R.menu.menu_home).listener(new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                switch (which) {
+
+                                    case R.id.book_service:
+                                        Intent intent1 = new Intent(HomeActivity.this, ProductActivity.class);
+                                        startActivity(intent1);
+                                        /*Toast.makeText(HomeActivity.this, "Sagar demo", Toast.LENGTH_SHORT).show();*/
+                                        break;
+
+                                    case R.id.Profile:
+                                        Intent intent = new Intent(HomeActivity.this, ProductActivity.class);
+                                        startActivity(intent);
+                                        /*Toast.makeText(HomeActivity.this, "Sagar demo", Toast.LENGTH_SHORT).show();*/
+                                        break;
+                                }
+                            }
+                        }).show();
                     }
                 });
             }
-
     }
-
 }
-
