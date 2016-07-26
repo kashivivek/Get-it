@@ -12,19 +12,23 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.example.vivek.db.DatabaseCopier;
+import com.example.vivek.pojo.LatLngBean;
 
 public class TestAdapter
 {
     protected static final String TAG = "DataAdapter";
 
     private final Context mContext;
-    private SQLiteDatabase mDb;
+    private SQLiteDatabase mDb ;
     private DatabaseCopier mDbHelper;
+
 
     public TestAdapter(Context context)
     {
         this.mContext = context;
         mDbHelper = new DatabaseCopier(mContext);
+
+
     }
 
     public TestAdapter createDatabase() throws SQLException
@@ -83,34 +87,68 @@ public class TestAdapter
     }*/
 
 
-    public ArrayList getCordinates(String category){
-
-
+    public  ArrayList<LatLngBean> getCordinates(String category){
+        ArrayList<LatLngBean> arrayList=new ArrayList<>();
+        System.out.println("Start get Cord");
+        try{
         String[] parts = category.split(":");//houshold:electrician
         String type = parts[1]; // electrician
-        String table_name=parts[0]+"_products_table";//household_products_table
-
-        String query = "SELECT  * FROM " + table_name+ " where type = "+type+"'";
-        Cursor cursor = mDb.rawQuery(query, null);
-        ArrayList al = new ArrayList();
+        String table_name=parts[0]+"_products_table";//household_products_tab
+        mDb = mDbHelper.getReadableDatabase();
+        String query = "SELECT  * FROM " + table_name+ " where type = "+"'"+type+"'";
+        String query2 = "select * from household_products_table";
+        Cursor cursor2 = mDb.rawQuery(query, null);
+        System.out.println("@@cursor is not null");
         String lattitude = null;
         String longitude = null;
-        if (cursor != null) {
-
-            if (cursor.moveToFirst()) {
+        String id = null;
+        String name = null;
+        String phone = null;
+        String ptype = null;
+        String imagepath = null;
+        if (cursor2 != null) {
+            System.out.println("@@cursor2 is not null");
+            if (cursor2.moveToFirst()) {
 
                 do {
-                    lattitude = cursor.getString(6);
-                    longitude = cursor.getString(3);
-                    String temp=longitude+","+lattitude;
+                    LatLngBean bean=new LatLngBean();
+                    id = cursor2.getString(0);
+                    name = cursor2.getString(1);
+                    phone = cursor2.getString(2);
+                    longitude = cursor2.getString(3);
+                    ptype = cursor2.getString(4);
+                    imagepath = cursor2.getString(5);
+                    lattitude = cursor2.getString(6);
+                    System.out.println("@@longitude" + longitude);
+/*
+                    System.out.println("@@longitude" + longitude);
+                    System.out.println("@@lattitude" + lattitude);
+                    String temp=longitude+","+lattitude+","+id;
                     al.add(temp);
+*/
+                    bean.setId(id);
+                    bean.setName(name);
+                    bean.setPhone(phone);
+                    bean.setLongitude(longitude);
+                    bean.setType(ptype);
+                    bean.setImagepath(imagepath);
+                    bean.setLatitude(lattitude);
+                    System.out.println(bean.getLatitude());
 
-                } while (cursor.moveToNext());
+                    arrayList.add(bean);
+
+                } while (cursor2.moveToNext());
             }
 
         }
+            cursor2.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        finally {
+            return arrayList;
+        }
 
-        return al;
     }
 
 
@@ -152,7 +190,10 @@ public class TestAdapter
            }
        } else
            result = false;
-       close();
-       return result;
+
+        if (cursor != null) {
+            cursor.close();
+        }
+        return result;
    }
 }

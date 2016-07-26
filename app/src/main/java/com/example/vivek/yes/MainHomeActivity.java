@@ -249,10 +249,10 @@ public class MainHomeActivity extends AppCompatActivity {
     public void openMapsMarker(View view) {
 
         String tag= (String) view.getTag();
-        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~"+tag+ "@@@@@@@@@@@");
+        //System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~"+tag+ "@@@@@@@@@@@");
         // Ordinary Intent for launching a new activity
         Intent intent = new Intent(MainHomeActivity.this, HomeActivity.class);
-        intent.putExtra(tag,tag);
+        intent.putExtra("tag2",tag);
         startActivity(intent);
     }
 
