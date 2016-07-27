@@ -4,4 +4,19 @@
     android:layout_height="match_parent"
     android:id="@+id/map"
     tools:context="com.example.vivek.yes.HomeActivity"
-    android:name="com.google.android.gms.maps.SupportMapFragment" />
+    android:name="com.google.android.gms.maps.SupportMapFragment" >
+
+    <ImageButton
+        android:id="@+id/ImageButton01"
+        android:padding="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxWidth="50dp"
+        android:maxHeight="50dp"
+        android:layout_gravity="start|top"
+        android:src="@drawable/plus"
+        android:background="?android:selectableItemBackground"
+         />
+
+
+</fragment>
