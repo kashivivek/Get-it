@@ -26,7 +26,7 @@
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <ImageView
-                android:id="@+id/imageview1"
+                android:id="@+id/image"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
                 android:fitsSystemWindows="true"
@@ -59,12 +59,10 @@
             android:layout_marginTop="24dp"
             app:cardElevation="6dp"
             app:cardUseCompatPadding="true">
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-
                 &lt;!&ndash;<TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -73,7 +71,6 @@
                     android:gravity="center"
                     android:text="http://d-codepages.com/"
                     android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
-
                 <TextView
                     android:id="@+id/description"
                     android:layout_width="match_parent"
@@ -90,7 +87,6 @@
                     android:gravity="start"
                     android:text="@string/name_label"
                     android:textStyle="bold"/>
-
                 <TextView
                     android:layout_toEndOf="@+id/name_label"
                     android:id="@+id/product_name"
@@ -110,7 +106,6 @@
                     android:gravity="start"
                     android:text="@string/typeofservice_label"
                     android:textStyle="bold"/>
-
                 <TextView
                     android:id="@+id/product_servicename"
                     android:layout_width="match_parent"
@@ -128,7 +123,6 @@
                     android:gravity="start"
                     android:text="@string/phone_label"
                     android:textStyle="bold"/>
-
                 <TextView
                     android:id="@+id/phone"
                     android:layout_width="match_parent"
@@ -137,17 +131,15 @@
                     android:textSize="@dimen/productinfotext_size"
                     android:text="@string/phone"
                     android:textStyle="italic" />
-
             </LinearLayout>
-
         </android.support.v7.widget.CardView>-->
 
 
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
 
             <ScrollView
@@ -218,245 +210,245 @@
                     <ScrollView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
-                    <LinearLayout
-                        android:id="@+id/linear"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_above="@+id/pay">
-
-
-
-
-
                         <LinearLayout
+                            android:id="@+id/linear"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            >
+                            android:orientation="vertical"
+                            android:layout_above="@+id/pay">
 
 
-                            <customfonts.MyTextView
-                                android:layout_weight="1"
-                                android:id="@+id/checkin"
-                                android:textSize="16dp"
+
+
+
+                            <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Check  in"
-                                android:textColor="@color/text"
-                                android:background="#0000"
-                                android:padding="16dp"
-                                android:gravity="left"
+                                android:orientation="horizontal"
+                                >
+
+
+                                <customfonts.MyTextView
+                                    android:layout_weight="1"
+                                    android:id="@+id/checkin"
+                                    android:textSize="16dp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Check  in"
+                                    android:textColor="@color/text"
+                                    android:background="#0000"
+                                    android:padding="16dp"
+                                    android:gravity="left"
+                                    />
+
+
+                                <customfonts.MyTextView
+                                    android:layout_weight="0.5"
+                                    android:id="@+id/checkintime"
+                                    android:textSize="16dp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Monday 10 March, 2:00 PM"
+                                    android:textColor="@color/subtext"
+                                    android:background="#0000"
+                                    android:padding="16dp"
+                                    android:gravity="right"
+                                    />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/devider"
+                                android:layout_marginLeft="16dp"
+                                android:layout_marginRight="16dp"
                                 />
 
 
-                            <customfonts.MyTextView
-                                android:layout_weight="0.5"
-                                android:id="@+id/checkintime"
-                                android:textSize="16dp"
+
+
+                            <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Monday 10 March, 2:00 PM"
-                                android:textColor="@color/subtext"
-                                android:background="#0000"
-                                android:padding="16dp"
-                                android:gravity="right"
-                                />
+                                android:orientation="horizontal"
+                                >
+
+
+
+                                <customfonts.MyTextView
+                                    android:layout_weight="1"
+                                    android:id="@+id/checkout"
+                                    android:textSize="16dp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Check  out"
+                                    android:textColor="@color/text"
+                                    android:background="#0000"
+                                    android:padding="16dp"
+                                    android:gravity="left"/>
+
+
+                                <customfonts.MyTextView
+                                    android:layout_weight="0.6"
+                                    android:id="@+id/checkouttime"
+                                    android:textSize="16dp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Friday 19 March, 11:00 AM"
+                                    android:textColor="@color/subtext"
+                                    android:background="#0000"
+                                    android:padding="16dp"
+                                    android:gravity="right"
+                                    />
+                            </LinearLayout>
+
+
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/devider"
+                                android:layout_marginLeft="16dp"
+                                android:layout_marginRight="16dp"/>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                >
+
+
+                                <customfonts.MyTextView
+                                    android:layout_weight="1"
+                                    android:id="@+id/totalprice"
+                                    android:textSize="16dp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Total Price"
+                                    android:textColor="@color/text"
+                                    android:background="#0000"
+                                    android:padding="16dp"
+                                    android:gravity="left"
+                                    />
+
+                                <customfonts.MyTextView
+                                    android:layout_weight="1"
+                                    android:id="@+id/tv"
+                                    android:textSize="16dp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="&#x20B9; 3200"
+                                    android:textColor="@color/subtext"
+                                    android:background="#0000"
+                                    android:padding="16dp"
+                                    android:gravity="right"
+                                    />
+                            </LinearLayout>
+
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/devider"
+                                android:layout_marginLeft="16dp"
+                                android:layout_marginRight="16dp"/>
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                >
+
+
+                                <customfonts.MyTextView
+                                    android:layout_weight="1"
+                                    android:id="@+id/conditions"
+                                    android:textSize="16dp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Booking Conditions"
+                                    android:textColor="@color/text"
+                                    android:background="#0000"
+                                    android:padding="16dp"
+                                    android:gravity="left"
+                                    android:drawableRight="@drawable/arrow"
+                                    />
+
+
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/devider"
+                                android:layout_marginLeft="16dp"
+                                android:layout_marginRight="16dp"/>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                >
+
+
+                                <customfonts.MyTextView
+                                    android:layout_weight="1"
+                                    android:id="@+id/termsconditions"
+                                    android:textSize="16dp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Terms and Conditions"
+                                    android:textColor="@color/text"
+                                    android:background="#0000"
+                                    android:padding="16dp"
+                                    android:gravity="left"
+                                    android:drawableRight="@drawable/arrow"
+                                    />
+
+
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/devider"
+                                android:layout_marginLeft="16dp"
+                                android:layout_marginRight="16dp"/>
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                >
+
+
+                                <customfonts.MyTextView
+                                    android:layout_weight="1"
+                                    android:id="@+id/privacystatement"
+                                    android:textSize="16dp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Privacy statement"
+                                    android:textColor="@color/text"
+                                    android:background="#0000"
+                                    android:padding="16dp"
+                                    android:gravity="left"
+                                    android:drawableRight="@drawable/arrow"
+                                    />
+
+
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/devider"
+                                android:layout_marginLeft="16dp"
+                                android:layout_marginRight="16dp"/>
+
                         </LinearLayout>
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:background="@color/devider"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="16dp"
-                            />
-
-
-
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            >
-
-
-
-                            <customfonts.MyTextView
-                                android:layout_weight="1"
-                                android:id="@+id/checkout"
-                                android:textSize="16dp"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="Check  out"
-                                android:textColor="@color/text"
-                                android:background="#0000"
-                                android:padding="16dp"
-                                android:gravity="left"/>
-
-
-                            <customfonts.MyTextView
-                                android:layout_weight="0.6"
-                                android:id="@+id/checkouttime"
-                                android:textSize="16dp"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="Friday 19 March, 11:00 AM"
-                                android:textColor="@color/subtext"
-                                android:background="#0000"
-                                android:padding="16dp"
-                                android:gravity="right"
-                                />
-                        </LinearLayout>
-
-
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:background="@color/devider"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="16dp"/>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            >
-
-
-                            <customfonts.MyTextView
-                                android:layout_weight="1"
-                                android:id="@+id/totalprice"
-                                android:textSize="16dp"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="Total Price"
-                                android:textColor="@color/text"
-                                android:background="#0000"
-                                android:padding="16dp"
-                                android:gravity="left"
-                                />
-
-                            <customfonts.MyTextView
-                                android:layout_weight="1"
-                                android:id="@+id/tv"
-                                android:textSize="16dp"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="&#x20B9; 3200"
-                                android:textColor="@color/subtext"
-                                android:background="#0000"
-                                android:padding="16dp"
-                                android:gravity="right"
-                                />
-                        </LinearLayout>
-
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:background="@color/devider"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="16dp"/>
-
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            >
-
-
-                            <customfonts.MyTextView
-                                android:layout_weight="1"
-                                android:id="@+id/conditions"
-                                android:textSize="16dp"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="Booking Conditions"
-                                android:textColor="@color/text"
-                                android:background="#0000"
-                                android:padding="16dp"
-                                android:gravity="left"
-                                android:drawableRight="@drawable/arrow"
-                                />
-
-
-                        </LinearLayout>
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:background="@color/devider"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="16dp"/>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            >
-
-
-                            <customfonts.MyTextView
-                                android:layout_weight="1"
-                                android:id="@+id/termsconditions"
-                                android:textSize="16dp"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="Terms and Conditions"
-                                android:textColor="@color/text"
-                                android:background="#0000"
-                                android:padding="16dp"
-                                android:gravity="left"
-                                android:drawableRight="@drawable/arrow"
-                                />
-
-
-                        </LinearLayout>
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:background="@color/devider"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="16dp"/>
-
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            >
-
-
-                            <customfonts.MyTextView
-                                android:layout_weight="1"
-                                android:id="@+id/privacystatement"
-                                android:textSize="16dp"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="Privacy statement"
-                                android:textColor="@color/text"
-                                android:background="#0000"
-                                android:padding="16dp"
-                                android:gravity="left"
-                                android:drawableRight="@drawable/arrow"
-                                />
-
-
-                        </LinearLayout>
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:background="@color/devider"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="16dp"/>
-
-                    </LinearLayout>
 
                     </ScrollView>
 
@@ -464,118 +456,118 @@
 
 
                     <!--****NAME TEXT****-->
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-                    <LinearLayout
+                    <ScrollView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:paddingTop="16dp"
-                        >
-
-                        <TextView
-                            android:id="@+id/info"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Personal Information"
-                            android:textColor="#333333"
-                            android:layout_marginLeft="16dp"
-                            android:textSize="16dp"
-                            />
-
-
+                        android:layout_height="wrap_content">
 
                         <LinearLayout
-                            android:layout_marginTop="16dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
-                            android:layout_marginRight="16dp"
-                            android:layout_marginLeft="16dp"
-                            android:background="#f7f7f9">
+                            android:paddingTop="16dp"
+                            >
 
-                            <customfonts.MyEditText
-                                android:id="@+id/fullname"
-                                android:layout_height="match_parent"
+                            <TextView
+                                android:id="@+id/info"
                                 android:layout_width="match_parent"
-                                android:textColorHint="@color/subtext"
-                                android:maxLines="1"
-                                android:hint="Full Name"
-                                android:inputType="text"
-                                android:layout_marginTop="11dp"
-                                android:layout_marginBottom="11dp"
+                                android:layout_height="wrap_content"
+                                android:text="Personal Information"
+                                android:textColor="#333333"
                                 android:layout_marginLeft="16dp"
-                                android:background="#00000000"
+                                android:textSize="16dp"
                                 />
+
+
+
+                            <LinearLayout
+                                android:layout_marginTop="16dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_marginRight="16dp"
+                                android:layout_marginLeft="16dp"
+                                android:background="#f7f7f9">
+
+                                <customfonts.MyEditText
+                                    android:id="@+id/fullname"
+                                    android:layout_height="match_parent"
+                                    android:layout_width="match_parent"
+                                    android:textColorHint="@color/subtext"
+                                    android:maxLines="1"
+                                    android:hint="Full Name"
+                                    android:inputType="text"
+                                    android:layout_marginTop="11dp"
+                                    android:layout_marginBottom="11dp"
+                                    android:layout_marginLeft="16dp"
+                                    android:background="#00000000"
+                                    />
+
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_marginTop="16dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_marginRight="16dp"
+                                android:layout_marginLeft="16dp"
+                                android:background="#f7f7f9">
+
+                                <customfonts.MyEditText
+                                    android:id="@+id/email"
+                                    android:layout_height="match_parent"
+                                    android:layout_width="match_parent"
+                                    android:textColorHint="@color/subtext"
+                                    android:maxLines="1"
+                                    android:hint="Email"
+                                    android:inputType="text"
+                                    android:layout_marginTop="11dp"
+                                    android:layout_marginBottom="11dp"
+                                    android:layout_marginLeft="16dp"
+
+
+
+                                    android:background="#00000000"
+                                    />
+
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_marginTop="16dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_marginRight="16dp"
+                                android:layout_marginLeft="16dp"
+                                android:background="#f7f7f9"
+                                android:layout_marginBottom="21dp">
+
+                                <customfonts.MyEditText
+                                    android:id="@+id/phone"
+                                    android:layout_height="match_parent"
+                                    android:layout_width="match_parent"
+                                    android:textColorHint="@color/subtext"
+                                    android:maxLines="1"
+                                    android:hint="Phone number"
+                                    android:inputType="number"
+                                    android:layout_marginTop="11dp"
+                                    android:layout_marginBottom="11dp"
+                                    android:layout_marginLeft="16dp"
+                                    android:background="#00000000"
+                                    />
+
+
+                            </LinearLayout>
+
+
 
 
                         </LinearLayout>
 
-                        <LinearLayout
-                            android:layout_marginTop="16dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:layout_marginRight="16dp"
-                            android:layout_marginLeft="16dp"
-                            android:background="#f7f7f9">
 
-                            <customfonts.MyEditText
-                                android:id="@+id/email"
-                                android:layout_height="match_parent"
-                                android:layout_width="match_parent"
-                                android:textColorHint="@color/subtext"
-                                android:maxLines="1"
-                                android:hint="Email"
-                                android:inputType="text"
-                                android:layout_marginTop="11dp"
-                                android:layout_marginBottom="11dp"
-                                android:layout_marginLeft="16dp"
-
-
-
-                                android:background="#00000000"
-                                />
-
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_marginTop="16dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:layout_marginRight="16dp"
-                            android:layout_marginLeft="16dp"
-                            android:background="#f7f7f9"
-                            android:layout_marginBottom="21dp">
-
-                            <customfonts.MyEditText
-                                android:id="@+id/phone"
-                                android:layout_height="match_parent"
-                                android:layout_width="match_parent"
-                                android:textColorHint="@color/subtext"
-                                android:maxLines="1"
-                                android:hint="Phone number"
-                                android:inputType="number"
-                                android:layout_marginTop="11dp"
-                                android:layout_marginBottom="11dp"
-                                android:layout_marginLeft="16dp"
-                                android:background="#00000000"
-                                />
-
-
-                        </LinearLayout>
-
-
-
-
-                    </LinearLayout>
-
-
-</ScrollView>
+                    </ScrollView>
 
                     <!--****Your name TEXT****-->
 
@@ -608,7 +600,7 @@
 
 
 
-</LinearLayout>
+        </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 
     <android.support.design.widget.FloatingActionButton
@@ -617,6 +609,19 @@
         app:layout_anchor="@id/app_bar_layout"
         app:layout_anchorGravity="bottom|right|end"
         app:theme="@style/ThemeOverlay.AppCompat.Light" />
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBar"
+        android:progressDrawable="@drawable/circular_progress_bar"
+        android:layout_below="@+id/button"
+        android:layout_alignRight="@+id/textView"
+        android:layout_alignEnd="@+id/textView"
+        android:layout_alignLeft="@+id/textview"
+        android:layout_alignStart="@+id/textview"
+        android:layout_alignParentBottom="true" />
 
 
 </android.support.design.widget.CoordinatorLayout>
