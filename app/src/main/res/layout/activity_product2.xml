@@ -52,95 +52,10 @@
         android:clipToPadding="false"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-
-        <!--<android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            app:cardElevation="6dp"
-            app:cardUseCompatPadding="true">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                &lt;!&ndash;<TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="30dp"
-                    android:autoLink="web|all"
-                    android:gravity="center"
-                    android:text="http://d-codepages.com/"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
-                <TextView
-                    android:id="@+id/description"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="30dp"
-                    android:text="@string/lorem_ipsum"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body1" />&ndash;&gt;
-                <TextView
-                    android:id="@+id/name_label"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="20dp"
-                    android:gravity="start"
-                    android:text="@string/name_label"
-                    android:textStyle="bold"/>
-                <TextView
-                    android:layout_toEndOf="@+id/name_label"
-                    android:id="@+id/product_name"
-                    android:textSize="@dimen/productinfotext_size"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:text="@string/product_name"
-                    android:textStyle="italic"
-                    android:layout_toRightOf="@+id/name_label" />
-                <TextView
-                    android:id="@+id/typeofservice_label"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="20dp"
-                    android:gravity="start"
-                    android:text="@string/typeofservice_label"
-                    android:textStyle="bold"/>
-                <TextView
-                    android:id="@+id/product_servicename"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:textSize="@dimen/productinfotext_size"
-                    android:text="@string/product_servicename"
-                    android:textStyle="italic" />
-                <TextView
-                    android:id="@+id/phone_label"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="20dp"
-                    android:gravity="start"
-                    android:text="@string/phone_label"
-                    android:textStyle="bold"/>
-                <TextView
-                    android:id="@+id/phone"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:textSize="@dimen/productinfotext_size"
-                    android:text="@string/phone"
-                    android:textStyle="italic" />
-            </LinearLayout>
-        </android.support.v7.widget.CardView>-->
-
-
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
 
             <ScrollView
                 android:layout_width="match_parent"
@@ -153,32 +68,12 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-
-
-
-
-
-
-
                     <FrameLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_above="@+id/linear"
 
                         >
-
-                        <!--<ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="250dp"
-                            android:src="@drawable/bg1"
-                            android:scaleType="centerCrop"
-                            android:layout_marginBottom="5dp"
-                            />-->
-
-
-
-
-
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -187,400 +82,243 @@
                             android:gravity="top"
                             android:padding="16dp">
 
-                            <!--<ImageView-->
-
-                            <!--android:layout_width="wrap_content"-->
-                            <!--android:layout_height="wrap_content"-->
-                            <!--android:src="@drawable/menu"-->
-                            <!--android:layout_gravity="left"-->
-                            <!--/>-->
-
-
-
-
-
-
-
                         </LinearLayout>
-
-
 
                     </FrameLayout>
-
-                    <ScrollView
+                    <LinearLayout
+                        android:id="@+id/linear"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <LinearLayout
-                            android:id="@+id/linear"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:layout_above="@+id/pay">
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_above="@+id/pay">
 
-
-
-
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                >
-
-
-                                <customfonts.MyTextView
-                                    android:layout_weight="1"
-                                    android:id="@+id/checkin"
-                                    android:textSize="16dp"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="Check  in"
-                                    android:textColor="@color/text"
-                                    android:background="#0000"
-                                    android:padding="16dp"
-                                    android:gravity="left"
-                                    />
-
-
-                                <customfonts.MyTextView
-                                    android:layout_weight="0.5"
-                                    android:id="@+id/checkintime"
-                                    android:textSize="16dp"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="Monday 10 March, 2:00 PM"
-                                    android:textColor="@color/subtext"
-                                    android:background="#0000"
-                                    android:padding="16dp"
-                                    android:gravity="right"
-                                    />
-                            </LinearLayout>
-
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="1dp"
-                                android:background="@color/devider"
-                                android:layout_marginLeft="16dp"
-                                android:layout_marginRight="16dp"
-                                />
-
-
-
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                >
-
-
-
-                                <customfonts.MyTextView
-                                    android:layout_weight="1"
-                                    android:id="@+id/checkout"
-                                    android:textSize="16dp"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="Check  out"
-                                    android:textColor="@color/text"
-                                    android:background="#0000"
-                                    android:padding="16dp"
-                                    android:gravity="left"/>
-
-
-                                <customfonts.MyTextView
-                                    android:layout_weight="0.6"
-                                    android:id="@+id/checkouttime"
-                                    android:textSize="16dp"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="Friday 19 March, 11:00 AM"
-                                    android:textColor="@color/subtext"
-                                    android:background="#0000"
-                                    android:padding="16dp"
-                                    android:gravity="right"
-                                    />
-                            </LinearLayout>
-
-
-
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="1dp"
-                                android:background="@color/devider"
-                                android:layout_marginLeft="16dp"
-                                android:layout_marginRight="16dp"/>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                >
-
-
-                                <customfonts.MyTextView
-                                    android:layout_weight="1"
-                                    android:id="@+id/totalprice"
-                                    android:textSize="16dp"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="Total Price"
-                                    android:textColor="@color/text"
-                                    android:background="#0000"
-                                    android:padding="16dp"
-                                    android:gravity="left"
-                                    />
-
-                                <customfonts.MyTextView
-                                    android:layout_weight="1"
-                                    android:id="@+id/tv"
-                                    android:textSize="16dp"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="&#x20B9; 3200"
-                                    android:textColor="@color/subtext"
-                                    android:background="#0000"
-                                    android:padding="16dp"
-                                    android:gravity="right"
-                                    />
-                            </LinearLayout>
-
-
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="1dp"
-                                android:background="@color/devider"
-                                android:layout_marginLeft="16dp"
-                                android:layout_marginRight="16dp"/>
-
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                >
-
-
-                                <customfonts.MyTextView
-                                    android:layout_weight="1"
-                                    android:id="@+id/conditions"
-                                    android:textSize="16dp"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="Booking Conditions"
-                                    android:textColor="@color/text"
-                                    android:background="#0000"
-                                    android:padding="16dp"
-                                    android:gravity="left"
-                                    android:drawableRight="@drawable/arrow"
-                                    />
-
-
-                            </LinearLayout>
-
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="1dp"
-                                android:background="@color/devider"
-                                android:layout_marginLeft="16dp"
-                                android:layout_marginRight="16dp"/>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                >
-
-
-                                <customfonts.MyTextView
-                                    android:layout_weight="1"
-                                    android:id="@+id/termsconditions"
-                                    android:textSize="16dp"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="Terms and Conditions"
-                                    android:textColor="@color/text"
-                                    android:background="#0000"
-                                    android:padding="16dp"
-                                    android:gravity="left"
-                                    android:drawableRight="@drawable/arrow"
-                                    />
-
-
-                            </LinearLayout>
-
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="1dp"
-                                android:background="@color/devider"
-                                android:layout_marginLeft="16dp"
-                                android:layout_marginRight="16dp"/>
-
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                >
-
-
-                                <customfonts.MyTextView
-                                    android:layout_weight="1"
-                                    android:id="@+id/privacystatement"
-                                    android:textSize="16dp"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="Privacy statement"
-                                    android:textColor="@color/text"
-                                    android:background="#0000"
-                                    android:padding="16dp"
-                                    android:gravity="left"
-                                    android:drawableRight="@drawable/arrow"
-                                    />
-
-
-                            </LinearLayout>
-
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="1dp"
-                                android:background="@color/devider"
-                                android:layout_marginLeft="16dp"
-                                android:layout_marginRight="16dp"/>
-
-                        </LinearLayout>
-
-                    </ScrollView>
-
-                    <!--***************************-->
-
-
-                    <!--****NAME TEXT****-->
-                    <ScrollView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:paddingTop="16dp"
+                            android:orientation="horizontal"
                             >
 
-                            <TextView
-                                android:id="@+id/info"
+                            <customfonts.MyTextView
+                                android:layout_weight="1"
+                                android:id="@+id/address"
+                                android:textSize="16dp"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Personal Information"
-                                android:textColor="#333333"
-                                android:layout_marginLeft="16dp"
-                                android:textSize="16dp"
+                                android:text="Address"
+                                android:textColor="@color/text"
+                                android:background="#0000"
+                                android:padding="16dp"
+                                android:gravity="left"
                                 />
 
 
-
-                            <LinearLayout
-                                android:layout_marginTop="16dp"
+                            <customfonts.MyTextView
+                                android:layout_weight="0.5"
+                                android:id="@+id/addressbean"
+                                android:textSize="16dp"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:orientation="vertical"
-                                android:layout_marginRight="16dp"
-                                android:layout_marginLeft="16dp"
-                                android:background="#f7f7f9">
+                                android:textColor="@color/subtext"
+                                android:background="#0000"
+                                android:padding="16dp"
+                                android:gravity="right"
+                                />
+                        </LinearLayout>
 
-                                <customfonts.MyEditText
-                                    android:id="@+id/fullname"
-                                    android:layout_height="match_parent"
-                                    android:layout_width="match_parent"
-                                    android:textColorHint="@color/subtext"
-                                    android:maxLines="1"
-                                    android:hint="Full Name"
-                                    android:inputType="text"
-                                    android:layout_marginTop="11dp"
-                                    android:layout_marginBottom="11dp"
-                                    android:layout_marginLeft="16dp"
-                                    android:background="#00000000"
-                                    />
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/devider"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="16dp"
+                            />
 
 
-                            </LinearLayout>
 
-                            <LinearLayout
-                                android:layout_marginTop="16dp"
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            >
+
+
+
+                            <customfonts.MyTextView
+                                android:layout_weight="1"
+                                android:id="@+id/Type"
+                                android:textSize="16dp"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:orientation="vertical"
-                                android:layout_marginRight="16dp"
-                                android:layout_marginLeft="16dp"
-                                android:background="#f7f7f9">
-
-                                <customfonts.MyEditText
-                                    android:id="@+id/email"
-                                    android:layout_height="match_parent"
-                                    android:layout_width="match_parent"
-                                    android:textColorHint="@color/subtext"
-                                    android:maxLines="1"
-                                    android:hint="Email"
-                                    android:inputType="text"
-                                    android:layout_marginTop="11dp"
-                                    android:layout_marginBottom="11dp"
-                                    android:layout_marginLeft="16dp"
+                                android:text="Type"
+                                android:textColor="@color/text"
+                                android:background="#0000"
+                                android:padding="16dp"
+                                android:gravity="left"/>
 
 
-
-                                    android:background="#00000000"
-                                    />
-
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_marginTop="16dp"
+                            <customfonts.MyTextView
+                                android:layout_weight="0.6"
+                                android:id="@+id/typebean"
+                                android:textSize="16dp"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:orientation="vertical"
-                                android:layout_marginRight="16dp"
-                                android:layout_marginLeft="16dp"
-                                android:background="#f7f7f9"
-                                android:layout_marginBottom="21dp">
-
-                                <customfonts.MyEditText
-                                    android:id="@+id/phone"
-                                    android:layout_height="match_parent"
-                                    android:layout_width="match_parent"
-                                    android:textColorHint="@color/subtext"
-                                    android:maxLines="1"
-                                    android:hint="Phone number"
-                                    android:inputType="number"
-                                    android:layout_marginTop="11dp"
-                                    android:layout_marginBottom="11dp"
-                                    android:layout_marginLeft="16dp"
-                                    android:background="#00000000"
-                                    />
+                                android:textColor="@color/subtext"
+                                android:background="#0000"
+                                android:padding="16dp"
+                                android:gravity="right"
+                                />
+                        </LinearLayout>
 
 
-                            </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/devider"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="16dp"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            >
 
 
+                            <customfonts.MyTextView
+                                android:layout_weight="1"
+                                android:id="@+id/phone"
+                                android:textSize="16dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Phone"
+                                android:textColor="@color/text"
+                                android:background="#0000"
+                                android:padding="16dp"
+                                android:gravity="left"
+                                />
+
+                            <customfonts.MyTextView
+                                android:layout_weight="1"
+                                android:id="@+id/phonebean"
+                                android:textSize="16dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/subtext"
+                                android:background="#0000"
+                                android:padding="16dp"
+                                android:gravity="right"
+                                />
+                        </LinearLayout>
+
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/devider"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="16dp"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            >
+
+
+                            <customfonts.MyTextView
+                                android:layout_weight="1"
+                                android:id="@+id/totalprice"
+                                android:textSize="16dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Minimum Price"
+                                android:textColor="@color/text"
+                                android:background="#0000"
+                                android:padding="16dp"
+                                android:gravity="left"
+                                />
+
+                            <customfonts.MyTextView
+                                android:layout_weight="1"
+                                android:id="@+id/tv"
+                                android:textSize="16dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/subtext"
+                                android:background="#0000"
+                                android:padding="16dp"
+                                android:gravity="right"
+                                />
+                        </LinearLayout>
+
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/devider"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="16dp"/>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            >
+
+
+                            <customfonts.MyTextView
+                                android:layout_weight="1"
+                                android:id="@+id/conditions"
+                                android:textSize="16dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Services offered"
+                                android:textColor="@color/text"
+                                android:background="#0000"
+                                android:padding="16dp"
+                                android:gravity="left"
+                                android:drawableRight="@drawable/arrow"
+                                />
 
 
                         </LinearLayout>
 
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/devider"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="16dp"/>
 
-                    </ScrollView>
-
-                    <!--****Your name TEXT****-->
-
-
-
-
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            >
 
 
+                            <customfonts.MyTextView
+                                android:layout_weight="1"
+                                android:id="@+id/termsconditions"
+                                android:textSize="16dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Terms and Conditions"
+                                android:textColor="@color/text"
+                                android:background="#0000"
+                                android:padding="16dp"
+                                android:gravity="left"
+                                android:drawableRight="@drawable/arrow"
+                                />
 
 
+                        </LinearLayout>
 
-
-
+                    </LinearLayout>
                 </LinearLayout>
             </ScrollView>
 
@@ -589,7 +327,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#04bebd"
-                android:text="Pay  &#x20B9; 3200"
+                android:text="Back to Results"
                 android:textSize="20dp"
                 android:textColor="#fff"
                 android:gravity="center"
@@ -608,20 +346,8 @@
         style="@style/fab"
         app:layout_anchor="@id/app_bar_layout"
         app:layout_anchorGravity="bottom|right|end"
-        app:theme="@style/ThemeOverlay.AppCompat.Light" />
-
-    <ProgressBar
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/progressBar"
-        android:progressDrawable="@drawable/circular_progress_bar"
-        android:layout_below="@+id/button"
-        android:layout_alignRight="@+id/textView"
-        android:layout_alignEnd="@+id/textView"
-        android:layout_alignLeft="@+id/textview"
-        android:layout_alignStart="@+id/textview"
-        android:layout_alignParentBottom="true" />
+        app:theme="@style/ThemeOverlay.AppCompat.Light"
+        android:onClick="callproduct"/>
 
 
 </android.support.design.widget.CoordinatorLayout>

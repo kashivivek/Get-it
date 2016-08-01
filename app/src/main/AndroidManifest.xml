@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.vivek.yes">
+    package="com.getit.vivek.yes">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -28,10 +28,10 @@
         android:theme="@style/AppTheme.NoActionBar">
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyBWh0LYyxL0i4Miq8UxULxAV_gT8_kCbxQ" />
+            android:value="AIzaSyDdIAH-vkX0LrUZjNFol4aThW6rY3UIn0w" />
 
         <activity
-            android:name=".SplashActivity"
+            android:name="com.getit.vivek.yes.SplashActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
@@ -42,44 +42,44 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name="com.getit.vivek.yes.MainActivity"
             android:screenOrientation="portrait"
             android:label="@string/app_name"
              />
         <activity
-            android:name=".HomePlacesActivity"
+            android:name="com.getit.vivek.yes.HomePlacesActivity"
             android:label="@string/app_name"
              />
         <activity
-            android:name=".HomeActivity"
+            android:name="com.getit.vivek.yes.HomeActivity"
             android:label="@string/title_activity_home"
              />
         <activity
-            android:name=".MainHomeActivity"
+            android:name="com.getit.vivek.yes.MainHomeActivity"
             android:label="@string/title_activity_main_home"
             android:theme="@style/AppTheme.appcompat.light" />
         <activity
-            android:name=".TimePass"
+            android:name="com.getit.vivek.yes.TimePass"
             android:label="@string/title_activity_time_pass"
              />
         <activity
-            android:name=".ProductActivity"
+            android:name="com.getit.vivek.yes.ProductActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             />
         <activity
-            android:name=".ProductInfo"
+            android:name="com.getit.vivek.yes.ProductInfo"
             android:label="@string/title_activity_product_info"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".BookActivity"
+            android:name="com.getit.vivek.yes.BookActivity"
             android:label="@string/title_activity_book"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".recentServicesActivity"
+            android:name="com.getit.vivek.yes.recentServicesActivity"
             android:label="@string/title_activity_recent_services"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".BookingActivity"
+            android:name="com.getit.vivek.yes.BookingActivity"
             android:label="@string/title_activity_booking"></activity>
     </application>
 

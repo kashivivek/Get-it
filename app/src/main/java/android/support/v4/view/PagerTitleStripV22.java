@@ -45,6 +45,7 @@ package android.support.v4.view;
  *
  * <p>For an interactive indicator, see {@link PagerTabStrip}.</p>
  */
+@SuppressWarnings("ResourceType")
 public class PagerTitleStripV22 extends ViewGroup implements ViewPager.Decor {
     private static final String TAG = "PagerTitleStrip";
 
