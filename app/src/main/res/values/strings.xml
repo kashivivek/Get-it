@@ -187,11 +187,7 @@ Imperdiet id felis lectus accumsan class, neque nullam quam, adipiscing turpis v
     <string name="tag_restaurants">food:biryani</string>
     <string name="tag_bakers">food:bakers</string>
     <string name="tag_chaat">food:chaat</string>
-
-
-
-
-
+    <string name="privacy">Privacy Policy</string>
 
 
 </resources>

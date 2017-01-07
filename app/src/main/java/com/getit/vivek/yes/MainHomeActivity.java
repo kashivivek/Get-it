@@ -4,91 +4,55 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Build;
-import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.PagerTabStripV22;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.util.LruCache;
-import android.util.TypedValue;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+
+import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.getit.vivek.utils.SessionManager;
-import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
-import com.google.android.gms.common.GooglePlayServicesRepairableException;
-import com.google.android.gms.location.places.ui.PlacePicker;
-
-import java.lang.ref.WeakReference;
 
 public class MainHomeActivity extends AppCompatActivity {
 
-    public static final String PREFS_NAME = "MyApp_Settings";
-    Context context;
+    /**
+     * The {@link android.support.v4.view.PagerAdapter} that will provide
+     * fragments for each of the sections. We use a
+     * {@link FragmentPagerAdapter} derivative, which will keep every
+     * loaded fragment in memory. If this becomes too memory intensive, it
+     * may be best to switch to a
+     * {@link android.support.v4.app.FragmentStatePagerAdapter}.
+     */
     SessionManager session;
     private SectionsPagerAdapter mSectionsPagerAdapter;
-    private LruCache<String, Bitmap> mMemoryCache;
+    Context c;
+
+    /**
+     * The {@link ViewPager} that will host the section contents.
+     */
     private ViewPager mViewPager;
-
-    public static Bitmap decodeSampledBitmapFromResource(Resources res, int resId,
-                                                         int reqWidth, int reqHeight) {
-
-        // First decode with inJustDecodeBounds=true to check dimensions
-        final BitmapFactory.Options options = new BitmapFactory.Options();
-        options.inJustDecodeBounds = true;
-        BitmapFactory.decodeResource(res, resId, options);
-
-        // Calculate inSampleSize
-        options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
-
-        // Decode bitmap with inSampleSize set
-        options.inJustDecodeBounds = false;
-        return BitmapFactory.decodeResource(res, resId, options);
-    }
-
-    public static int calculateInSampleSize(
-            BitmapFactory.Options options, int reqWidth, int reqHeight) {
-        // Raw height and width of image
-        final int height = options.outHeight;
-        final int width = options.outWidth;
-        int inSampleSize = 1;
-
-        if (height > reqHeight || width > reqWidth) {
-
-            final int halfHeight = height / 2;
-            final int halfWidth = width / 2;
-
-            // Calculate the largest inSampleSize value that is a power of 2 and keeps both
-            // height and width larger than the requested height and width.
-            while ((halfHeight / inSampleSize) > reqHeight
-                    && (halfWidth / inSampleSize) > reqWidth) {
-                inSampleSize *= 2;
-            }
-        }
-
-        return inSampleSize;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setTitle("sLiDe rIgHt tO hUnT!!!");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_home);
         session = new SessionManager(getApplicationContext());
@@ -98,37 +62,17 @@ public class MainHomeActivity extends AppCompatActivity {
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
-        PagerTabStripV22 titleStrip = (PagerTabStripV22) findViewById(R.id.pager_tab_strip);
-        titleStrip.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
-       /* SharedPreferences saved_values = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        String count = saved_values.getString("count", null);
-        System.out.println("@@@@@@@@@@iloveanusha"+count+ "@@@@@@@@@@@");
-*/
+
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
-        //setting cache memory min
-        final int maxMemory = (int) (Runtime.getRuntime().maxMemory() / 1024);
-
-        // Use 1/8th of the available memory for this memory cache.
-        final int cacheSize = maxMemory / 8;
-
-        mMemoryCache = new LruCache<String, Bitmap>(cacheSize) {
-            @Override
-            protected int sizeOf(String key, Bitmap bitmap) {
-                // The cache size will be measured in kilobytes rather than
-                // number of items.
-                return bitmap.getByteCount() / 1024;
-            }
-        };
-
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(mViewPager);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             mViewPager.setTransitionName("profile");
         }
-
-
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -139,30 +83,12 @@ public class MainHomeActivity extends AppCompatActivity {
 
                 Intent sendIntent = new Intent(Intent.ACTION_VIEW);
                 sendIntent.setClassName("com.google.android.gm", "com.google.android.gm.ComposeActivityGmail");
-                sendIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"kashivivek@gmail.com"});
-                sendIntent.setData(Uri.parse("mailto:kashivivek@gmail.com"));
-                sendIntent.putExtra(Intent.EXTRA_SUBJECT, "Customer Feedback From " + MainHomeActivity.this.getString(R.string.user_name));
-                sendIntent.setType("plain/text");
-                sendIntent.putExtra(Intent.EXTRA_TEXT, "");
                 startActivity(sendIntent);
             }
         });
 
     }
 
-
-
-    //Bitmap methods
-    public void addBitmapToMemoryCache(String key, Bitmap bitmap) {
-        if (getBitmapFromMemCache(key) == null) {
-            mMemoryCache.put(key, bitmap);
-        }
-    }
-
-
-    public Bitmap getBitmapFromMemCache(String key) {
-        return mMemoryCache.get(key);
-    }
 
     @Override
     public void onBackPressed() {
@@ -187,14 +113,10 @@ public class MainHomeActivity extends AppCompatActivity {
         alert.show();
     }
 
+
+
     public void changeFragment(int item, boolean smoothScroll) {
         mViewPager.setCurrentItem(item, smoothScroll);
-    }
-
-    //Database Example
-    public void floatingthing(View view) {
-        Intent intent = new Intent(MainHomeActivity.this, MainHomeActivity.class);
-        startActivity(intent);
     }
 
     //Recent services
@@ -203,8 +125,7 @@ public class MainHomeActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-
-    // MainActivity
+    // Profile Page
     public void animateIntent(View view) {
 
         // Ordinary Intent for launching a new activity
@@ -227,29 +148,13 @@ public class MainHomeActivity extends AppCompatActivity {
 
     }
 
-    public void openbox(View view) throws GooglePlayServicesNotAvailableException, GooglePlayServicesRepairableException {
-
-        int PLACE_PICKER_REQUEST = 1;
-        PlacePicker.IntentBuilder builder = new PlacePicker.IntentBuilder();
-        startActivityForResult(builder.build(this), PLACE_PICKER_REQUEST);
-
-    }
-
-    //Places
-    public void openMaps(View view) {
-
-        // Ordinary Intent for launching a new activity
-        Intent intent = new Intent(MainHomeActivity.this, HomeActivity.class);
-        //Intent intent = new Intent(MainHomeActivity.this, ProductInfo.class);
-        startActivity(intent);
-    }
-
     //Desired one
     public void openMapsMarker(View view) {
 
         String tag= (String) view.getTag();
         //System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~"+tag+ "@@@@@@@@@@@");
         // Ordinary Intent for launching a new activity
+
         Intent intent = new Intent(MainHomeActivity.this, HomeActivity.class);
         intent.putExtra("tag2",tag);
         startActivity(intent);
@@ -274,6 +179,15 @@ public class MainHomeActivity extends AppCompatActivity {
             logout_dialog();
             return true;
         }
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_privacy) {
+            WebView view = new WebView(this);
+            view.getSettings().setJavaScriptEnabled(true);
+            view.loadUrl("file:///android_asset/privacypolicy.html");
+            view.setBackgroundColor(Color.TRANSPARENT);
+            setContentView(view);
+        }
+
 
         return super.onOptionsItemSelected(item);
     }
@@ -458,38 +372,6 @@ public class MainHomeActivity extends AppCompatActivity {
     }
 
 
-    //This is for bitmap worker
-
-    class BitmapWorkerTask extends AsyncTask<Integer, Void, Bitmap> {
-        private final WeakReference<ImageView> imageViewReference;
-        private int data = 0;
-
-        public BitmapWorkerTask(ImageView imageView) {
-            // Use a WeakReference to ensure the ImageView can be garbage collected
-            imageViewReference = new WeakReference<ImageView>(imageView);
-        }
-
-        // Decode image in background.
-        @Override
-        protected Bitmap doInBackground(Integer... params) {
-            final Bitmap bitmap = decodeSampledBitmapFromResource(
-                    getResources(), params[0], 100, 100);
-            addBitmapToMemoryCache(String.valueOf(params[0]), bitmap);
-            return bitmap;
-        }
-
-        // Once complete, see if ImageView is still around and set bitmap.
-        @Override
-        protected void onPostExecute(Bitmap bitmap) {
-            if (imageViewReference != null && bitmap != null) {
-                final ImageView imageView = imageViewReference.get();
-                if (imageView != null) {
-                    imageView.setImageBitmap(bitmap);
-                }
-            }
-        }
-    }
-
     /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
      * one of the sections/tabs/pages.
@@ -523,16 +405,14 @@ public class MainHomeActivity extends AppCompatActivity {
                     //Food Activity
                     return FoodFragment.newInstance(position + 1);
             }
-
             return null;
         }
 
         @Override
         public int getCount() {
-            // Show 3 total pages.
+            // Show 5 total pages.
             return 5;
         }
-
 
         @Override
         public CharSequence getPageTitle(int position) {

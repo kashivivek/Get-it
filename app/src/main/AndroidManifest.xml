@@ -57,6 +57,7 @@
         <activity
             android:name="com.getit.vivek.yes.MainHomeActivity"
             android:label="@string/title_activity_main_home"
+            android:exported="true"
             android:theme="@style/AppTheme.appcompat.light" />
         <activity
             android:name="com.getit.vivek.yes.TimePass"
