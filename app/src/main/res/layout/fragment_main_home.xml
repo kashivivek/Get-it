@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.getit.vivek.yes.MainHomeActivity$MainHomeFragment">
+    tools:context="com.getit.getit.yes.MainHomeActivity$MainHomeFragment">
 
     <com.mikhaellopez.circularimageview.CircularImageView
         android:id="@+id/profile_pic"
@@ -44,7 +44,7 @@
         android:textStyle="bold" />
     <!--
 
-        <com.example.vivek.yes.CustomTextView
+        <com.example.com.avsoftsol.getit.vivek.yes.CustomTextView
             android:id="@+id/text_username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

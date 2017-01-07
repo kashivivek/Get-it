@@ -7,7 +7,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:transitionName="profile"
-    tools:context="com.getit.vivek.yes.TimePass">
+    tools:context="com.getit.getit.yes.TimePass">
 
     <ImageView
         android:id="@+id/profile_pic"
@@ -16,7 +16,7 @@
         android:src="@drawable/user"
         android:transitionName="profilepic" />
 
-    <!-- <com.example.vivek.yes.CustomTextView
+    <!-- <com.example.com.avsoftsol.getit.vivek.yes.CustomTextView
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
          android:text="HelloWorld How are you???"

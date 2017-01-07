@@ -10,7 +10,7 @@
         android:layout_height="match_parent"
         tools:context=".recentServicesActivity" />
 
-    <!--<com.example.vivek.utils.CustomRecyclerView
+    <!--<com.example.com.avsoftsol.getit.vivek.utils.CustomRecyclerView
     android:id="@+id/list"
     android:layout_width="match_parent"
     android:layout_height="match_parent"

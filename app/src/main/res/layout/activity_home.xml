@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/map"
-    tools:context="com.getit.vivek.yes.HomeActivity"
+    tools:context="com.getit.getit.yes.HomeActivity"
     android:name="com.google.android.gms.maps.SupportMapFragment" >
 
     <ImageButton
