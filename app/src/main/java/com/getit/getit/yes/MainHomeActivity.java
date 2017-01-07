@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -18,6 +19,11 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
+import android.text.style.ImageSpan;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -41,6 +47,13 @@ public class MainHomeActivity extends AppCompatActivity {
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
     SessionManager session;
+    private int[] imageResId = {
+            R.drawable.ic_tab_home,
+            R.drawable.ic_tab_householdworks,
+            R.drawable.ic_tab_lifestyle,
+            R.drawable.ic_tab_groceries,
+            R.drawable.ic_tab_food
+    };
     private SectionsPagerAdapter mSectionsPagerAdapter;
     Context c;
 
@@ -65,8 +78,15 @@ public class MainHomeActivity extends AppCompatActivity {
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
+
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
+        tabLayout.getTabAt(0).setIcon(imageResId[0]);
+        tabLayout.getTabAt(1).setIcon(imageResId[1]);
+        tabLayout.getTabAt(2).setIcon(imageResId[2]);
+        tabLayout.getTabAt(3).setIcon(imageResId[3]);
+        tabLayout.getTabAt(4).setIcon(imageResId[4]);
+
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             mViewPager.setTransitionName("profile");
@@ -85,6 +105,36 @@ public class MainHomeActivity extends AppCompatActivity {
             }
         });
 
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                if (position == 0) {
+                    setTitle("Get-it Home Page");
+                } else if (position == 1) {
+                    setTitle("House Hold Works");
+                } else if (position == 2) {
+                    setTitle("Life Style");
+                } else if (position == 3){
+                    setTitle("Groceries");
+                } else {
+                    setTitle("Food");
+                }
+
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+
+
+        });
     }
 
 
@@ -110,6 +160,7 @@ public class MainHomeActivity extends AppCompatActivity {
         final AlertDialog alert = builder.create();
         alert.show();
     }
+
 
 
 
@@ -412,21 +463,5 @@ public class MainHomeActivity extends AppCompatActivity {
             return 5;
         }
 
-        @Override
-        public CharSequence getPageTitle(int position) {
-            switch (position) {
-                case 0:
-                    return "hOmE pAgE";
-                case 1:
-                    return "hOuSe hOLd wOrKs";
-                case 2:
-                    return "LiFe sTyLe";
-                case 3:
-                    return "gRoCeRiEs";
-                case 4:
-                    return "FoOd";
-            }
-            return super.getPageTitle(position);
-        }
     }
 }
