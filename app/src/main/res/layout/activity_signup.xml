@@ -5,7 +5,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".MainActivity">
+    tools:context=".SignupActivity">
 
 
     <ImageView
@@ -36,8 +36,6 @@
         android:layout_below="@+id/username"
         android:hint="@string/label_password"
         android:inputType="textPassword"
-
-
         >
 
     </customfonts.MyEditText>
@@ -45,19 +43,17 @@
 
 
     <Button
-        android:id="@+id/submit_button"
+        android:id="@+id/alreadySignInButtonId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="5dp"
-        android:layout_below="@+id/password"
+        android:layout_below="@+id/signup_button"
         android:layout_margin="5dp"
-        android:textAllCaps="false"
-        android:textStyle="normal"
         android:background="@drawable/ripple"
         android:backgroundTint="#42aaaf"
         android:elevation="10dp"
         android:layout_centerHorizontal="true"
-        android:text="@string/label_loginbutton"
+        android:text="@string/label_alreadyloginbutton"
         android:textColor="@android:color/black"
         />
     <Button
@@ -65,24 +61,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="5dp"
-        android:textAllCaps="false"
-        android:textStyle="normal"
         android:layout_marginTop="5dp"
-        android:layout_below="@+id/submit_button"
+        android:layout_below="@+id/password"
         android:background="@drawable/ripple"
         android:layout_centerHorizontal="true"
         android:backgroundTint="#42aaaf"
         android:elevation="10dp"
-        android:text="@string/label_signUpButtonLoginScreen"
+        android:text="@string/label_signupbutton"
         android:textColor="@android:color/black"
         />
-
     <ProgressBar
         android:id="@+id/progressBar"
-        android:layout_below="@+id/signup_button"
+        android:layout_below="@+id/alreadySignInButtonId"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_centerHorizontal="true"
+        android:layout_gravity="center|bottom"
         android:layout_marginBottom="20dp"
         android:visibility="gone" />
 

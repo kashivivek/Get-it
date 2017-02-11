@@ -8,66 +8,98 @@
     import android.content.pm.PackageManager;
     import android.location.LocationManager;
     import android.os.Bundle;
+    import android.support.annotation.NonNull;
     import android.support.v4.app.ActivityCompat;
     import android.support.v4.content.ContextCompat;
+    import android.text.TextUtils;
     import android.view.Menu;
     import android.view.MenuItem;
     import android.view.View;
     import android.widget.Button;
     import android.widget.EditText;
+    import android.widget.ProgressBar;
     import android.widget.Toast;
 
     import com.getit.getit.utils.SessionManager;
+    import com.google.android.gms.tasks.OnCompleteListener;
+    import com.google.android.gms.tasks.Task;
+    import com.google.firebase.auth.AuthResult;
+    import com.google.firebase.auth.FirebaseAuth;
 
     public class MainActivity extends Activity {
         public static final String PREFS_NAME = "MyPrefs";
-        DBHelper db = new DBHelper(this);
-        //DatabaseCopier dbc = new DatabaseCopier(getApplication().getApplicationContext());
-        SharedPreferences sharedpreferences;
+        private EditText inputEmail, inputPassword;
+        private FirebaseAuth auth;
+        private ProgressBar progressBar;
+        private Button btnSignup, btnLogin, btnReset;
         SessionManager session;
-        Context urContext;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         buildAlertMessageNoGps();
         super.onCreate(savedInstanceState);
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        /*try {
-            dbc.createDataBase();
-        } catch (IOException e) {
-            e.printStackTrace();
+
+        auth = FirebaseAuth.getInstance();
+       /* if (auth.getCurrentUser() != null) {
+            startActivity(new Intent(MainActivity.this, MainHomeActivity.class));
+            finish();
         }*/
-       final TestAdapter mDbHelper = new TestAdapter(getApplicationContext());
+        setContentView(R.layout.activity_main);
+        final TestAdapter mDbHelper = new TestAdapter(getApplicationContext());
         mDbHelper.createDatabase();
         mDbHelper.open();
-
-       /* db.onUpgrade(db.getWritableDatabase(), 1, 2);
-        db.generateTable();*/
         session = new SessionManager(getApplicationContext());
-        Button login_button= (Button) findViewById(R.id.submit_button);
-        login_button.setOnClickListener(new View.OnClickListener() {
+        inputEmail = (EditText) findViewById(R.id.username);
+        inputPassword = (EditText) findViewById(R.id.password);
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        btnSignup = (Button) findViewById(R.id.signup_button);
+        btnLogin = (Button) findViewById(R.id.submit_button);
+
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                final String email = inputEmail.getText().toString();
+                                                final String password = inputPassword.getText().toString();
+                                                if (TextUtils.isEmpty(email)) {
+                                                    Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
+                                                    return;
+                                                }
+
+                                                if (TextUtils.isEmpty(password)) {
+                                                    Toast.makeText(getApplicationContext(), "Enter password!", Toast.LENGTH_SHORT).show();
+                                                    return;
+                                                }
+
+                                                progressBar.setVisibility(View.VISIBLE);
+
+                                                auth.signInWithEmailAndPassword(email, password)
+                                                        .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
+                                                            @Override
+                                                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                                                // If sign in fails, display a message to the user. If sign in succeeds
+                                                                // the auth state listener will be notified and logic to handle the
+                                                                // signed in user can be handled in the listener.
+                                                                progressBar.setVisibility(View.GONE);
+                                                                if (!task.isSuccessful()) {
+                                                                    Toast.makeText(MainActivity.this, "Login Failed, Please use valid credentials picheswar!!", Toast.LENGTH_SHORT).show();
+                                                                } else {
+                                                                    System.out.println("entered validate user main activity");
+                                                                    session.createLoginSession(email,password);
+                                                                    Intent intent = new Intent(MainActivity.this, MainHomeActivity.class);
+                                                                    startActivity(intent);
+                                                                    finish();
+                                                                }
+                                                            }
+                                                        });
+                                                }
+                                            }
+        );
+        btnSignup.setOnClickListener(new View.OnClickListener() {
 
                                             @Override
                                             public void onClick(View v) {
-                                                EditText text_uname = (EditText) findViewById(R.id.username);
-                                                EditText text_pwd = (EditText) findViewById(R.id.password);
-                                                String uname = text_uname.getText().toString();
-                                                System.out.print("@@MAin Activity"+uname);
-                                                String pwd = text_pwd.getText().toString();
-                                                System.out.print("@@MAin Activity"+pwd);
-                                                String users= "users";
-                                                if (uname.trim().length() > 0 && pwd.trim().length() > 0) {
-                                                    if (mDbHelper.validateUser(uname, pwd,users)) {
-                                                        System.out.println("entered validate user main activity");
-                                                        session.createLoginSession("uname", "pwd");
-                                                        Intent intent = new Intent(MainActivity.this, MainHomeActivity.class);
-                                                       // mDbHelper.close();
-                                                        startActivity(intent);
-                                                    } else
-                                                        Toast.makeText(MainActivity.this, "Login Failed, Please use valid credentials picheswar!!", Toast.LENGTH_SHORT).show();
-                                                } else
-                                                    Toast.makeText(MainActivity.this, "Picheswar!! Type something, You Son of a B**** ", Toast.LENGTH_SHORT).show();
+                                                Intent intent = new Intent(MainActivity.this, SignupActivity.class);
+                                                startActivity(intent);
                                             }
                                         }
         );

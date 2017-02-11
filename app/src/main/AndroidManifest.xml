@@ -25,7 +25,8 @@
         android:icon="@mipmap/oie_transparent"
         android:label="@string/app_name"
         android:largeHeap="true"
-        android:theme="@style/AppTheme.NoActionBar">
+        android:theme="@style/AppTheme.NoActionBar"
+        android:name="android.support.multidex.MultiDexApplication">
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDdIAH-vkX0LrUZjNFol4aThW6rY3UIn0w" />
@@ -46,6 +47,11 @@
             android:screenOrientation="portrait"
             android:label="@string/app_name"
              />
+        <activity
+            android:name="com.getit.getit.yes.SignupActivity"
+            android:screenOrientation="portrait"
+            android:label="@string/activiySignupLabel"
+            />
         <activity
             android:name="com.getit.getit.yes.HomePlacesActivity"
             android:label="@string/app_name"

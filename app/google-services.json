@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "435000130551",
+    "firebase_url": "https://stellar-cumulus-108603.firebaseio.com",
+    "project_id": "stellar-cumulus-108603",
+    "storage_bucket": "stellar-cumulus-108603.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:435000130551:android:44c0949bb9cf20fa",
+        "android_client_info": {
+          "package_name": "com.getit.getit.yes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "435000130551-s5fj64roght6tgj0g7eao0ld648820aj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4yL5i-ultwqC_Rl74PnSAmnvAi09C5ZI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "435000130551-s5fj64roght6tgj0g7eao0ld648820aj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
