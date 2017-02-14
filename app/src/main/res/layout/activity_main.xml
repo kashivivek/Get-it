@@ -42,14 +42,22 @@
 
     </customfonts.MyEditText>
 
-
+    <CheckBox
+        android:id="@+id/saveLoginCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/password"
+        android:text="Save Login?"
+        android:layout_centerHorizontal="true"
+        android:textColor="#42aaaf" />
 
     <Button
         android:id="@+id/submit_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="5dp"
-        android:layout_below="@+id/password"
+        android:layout_below="@+id/saveLoginCheckBox"
         android:layout_margin="5dp"
         android:textAllCaps="false"
         android:textStyle="normal"
