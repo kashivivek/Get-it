@@ -6,6 +6,8 @@
     <color name="my_color_highlight">#FFE99E63</color>
     <!-- main color for drawable/my_ripple -->
     <color name="my_color_highlight_press">#77E99E63</color>
+    <color name="shadow">#555555</color>
+    <color name="title">#777777</color>
     <color name="my_color_highlight_focus">#CCE99E63</color>
     <color name="black">#000</color>
     <color name="orange">#FA0</color>

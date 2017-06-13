@@ -1,11 +1,13 @@
 package com.getit.getit.yes;
 
 import android.app.AlertDialog;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Build;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -35,6 +37,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.getit.getit.utils.SessionManager;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MainHomeActivity extends AppCompatActivity {
 
@@ -47,6 +50,7 @@ public class MainHomeActivity extends AppCompatActivity {
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
     SessionManager session;
+    private FirebaseAuth auth;
     private int[] imageResId = {
             R.drawable.ic_tab_home,
             R.drawable.ic_tab_householdworks,
@@ -70,6 +74,7 @@ public class MainHomeActivity extends AppCompatActivity {
         session.checkLogin();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        auth = FirebaseAuth.getInstance();
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
@@ -149,7 +154,9 @@ public class MainHomeActivity extends AppCompatActivity {
                 .setCancelable(false)
                 .setPositiveButton("Log out", new DialogInterface.OnClickListener() {
                     public void onClick(final DialogInterface dialog, final int id) {
+                        auth.signOut();
                         session.logoutUser();
+
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -280,7 +287,17 @@ public class MainHomeActivity extends AppCompatActivity {
 
                                              @Override
                                              public void onClick(View v) {
-                                                 ((MainHomeActivity) getActivity()).changeFragment(1, true);
+
+                                                 Intent appIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("vnd.youtube:" + "3_c6o6mJaTg"));
+                                                 Intent webIntent = new Intent(Intent.ACTION_VIEW,
+                                                         Uri.parse("https://www.youtube.com/watch?v=3_c6o6mJaTg"));
+                                                 try {
+                                                     startActivity(appIntent);
+                                                 } catch (ActivityNotFoundException ex) {
+                                                     startActivity(webIntent);
+                                                 }
+
+                                                 /*((MainHomeActivity) getActivity()).changeFragment(1, true);*/
                                              }
                                          }
             );

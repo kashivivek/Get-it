@@ -56,12 +56,12 @@
             android:textSize="18dp" />
     -->
 
-    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+   <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:id="@+id/recent_activities_card"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:layout_below="@+id/profile_pic"
+        android:layout_below="@+id/intro_card"
         android:layout_margin="5dp"
         android:orientation="horizontal"
         card_view:cardCornerRadius="5dp">
@@ -88,19 +88,18 @@
                 android:text="@string/title_activity_recent_services"
                 android:textColor="@android:color/white"
                 android:textSize="24sp" />
-        <!--android:onClick="openRecentServices"-->
+
 
 
 
     </android.support.v7.widget.CardView>
-
 
     <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:id="@+id/intro_card"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:layout_below="@+id/recent_activities_card"
+        android:layout_below="@+id/profile_pic"
         android:layout_margin="5dp"
         android:orientation="horizontal"
         card_view:cardCornerRadius="5dp">
@@ -116,7 +115,7 @@
                 android:layout_centerInParent="true"
                 android:scaleType="centerCrop"
                 android:tint="@color/photo_tint"
-                android:src="@drawable/orange_arrow"/>
+                android:src="@drawable/youtube"/>
 
             <customfonts.MyTextView
                 android:id="@+id/intro_banner_text"
@@ -127,7 +126,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:gravity="center"
-                android:text="@string/intro_text"
+                android:text="@string/labelPlayVisionVideo"
                 android:textColor="@android:color/white"
                 android:textSize="24sp" />
 

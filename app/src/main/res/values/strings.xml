@@ -1,9 +1,13 @@
 <resources>
     <string name="app_name">Get-it</string>
-    <string name="label_username">Login id</string>
+    <string name="activiySignupLabel">User Registration</string>
+    <string name="label_username">Email Address</string>
     <string name="label_password">Password</string>
     <string name="title_close">Submit</string>
-    <string name="label_loginbutton">Login</string>
+    <string name="label_loginbutton">Sign in</string>
+    <string name="label_alreadyloginbutton">Already Registered? Sign in</string>
+    <string name="label_signUpButtonLoginScreen">Not a Member? Get Registered now!</string>
+    <string name="label_signupbutton">Register</string>
     <string name="action_settings">Settings</string>
 
     <string name="title_activity_home_page">HomePage</string>
@@ -155,11 +159,9 @@ Imperdiet id felis lectus accumsan class, neque nullam quam, adipiscing turpis v
     <string name="title_activity_employee_list">EmployeeList</string>
     <string name="title_activity_product_info">ProductInfo</string>
     <string name="title_activity_book">BookActivity</string>
-    <string name="label_signupbutton">Signup?</string>
     <string name="age_place">25 M, Hyderabad</string>
     <string name="title_activity_recent_services">Recent Services</string>
-    <string name="intro_text">Slide Right to Start</string>
-    <string name="no_network_connection_toast">No Connection</string>
+   <string name="no_network_connection_toast">No Connection</string>
     <string name="title_activity_booking">Book Service</string>
     <string name="name_label">Name</string>
     <string name="typeofservice_label">Type of Service</string>
@@ -188,6 +190,7 @@ Imperdiet id felis lectus accumsan class, neque nullam quam, adipiscing turpis v
     <string name="tag_bakers">food:bakers</string>
     <string name="tag_chaat">food:chaat</string>
     <string name="privacy">Privacy Policy</string>
+    <string name="labelPlayVisionVideo">Watch Video</string>
 
 
 </resources>
