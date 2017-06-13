@@ -8,8 +8,8 @@ android {
         applicationId "com.getit.getit.yes"
         minSdkVersion 16
         targetSdkVersion 23
-        versionCode 6
-        versionName "1.5"
+        versionCode 7
+        versionName "1.6"
         multiDexEnabled true
     }
     dexOptions {
