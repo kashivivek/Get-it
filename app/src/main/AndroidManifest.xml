@@ -29,7 +29,7 @@
         android:name="android.support.multidex.MultiDexApplication">
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDdIAH-vkX0LrUZjNFol4aThW6rY3UIn0w" />
+            android:value="AIzaSyBa1T1j6_9OhrIdMy_Tb-GUrqoJ1dw1XwA" />
 
         <activity
             android:name="com.getit.getit.yes.SplashActivity"
