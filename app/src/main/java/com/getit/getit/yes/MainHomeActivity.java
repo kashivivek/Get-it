@@ -14,6 +14,8 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 
 import android.support.v4.app.Fragment;
@@ -36,8 +38,12 @@ import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.getit.getit.pojo.DataModel;
+import com.getit.getit.utils.RecyclerViewAdapter;
 import com.getit.getit.utils.SessionManager;
 import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.ArrayList;
 
 public class MainHomeActivity extends AppCompatActivity {
 
@@ -51,6 +57,11 @@ public class MainHomeActivity extends AppCompatActivity {
      */
     SessionManager session;
     private FirebaseAuth auth;
+    //private RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);;
+    //String and Integer array for Recycler View Items
+    public static final String[] TITLES= {"Biryani","Restaurants","Bakers,Pizzas n Sweets","Chaat"};
+    public static final String[] TAGS= {"food:biryani","food:Restaurants","food:bakers","food:chaat"};
+    public static final Integer[] IMAGES= {R.drawable.biryani,R.drawable.vegeterian,R.drawable.pizza,R.drawable.chat};
     private int[] imageResId = {
             R.drawable.ic_tab_home,
             R.drawable.ic_tab_householdworks,
@@ -168,9 +179,6 @@ public class MainHomeActivity extends AppCompatActivity {
         alert.show();
     }
 
-
-
-
     public void changeFragment(int item, boolean smoothScroll) {
         mViewPager.setCurrentItem(item, smoothScroll);
     }
@@ -214,6 +222,22 @@ public class MainHomeActivity extends AppCompatActivity {
         Intent intent = new Intent(MainHomeActivity.this, HomeActivity.class);
         intent.putExtra("tag2",tag);
         startActivity(intent);
+    }
+    public void initviews(RecyclerView recyclerView){
+        System.out.println(recyclerView);
+
+        recyclerView.setHasFixedSize(true);
+
+        //Set RecyclerView type according to intent value
+        recyclerView
+                .setLayoutManager(new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL));// Here 2 is no. of columns to be displayed
+        ArrayList<DataModel> arrayList = new ArrayList<>();
+        for (int i = 0; i < TITLES.length; i++) {
+            arrayList.add(new DataModel(TITLES[i],IMAGES[i],TAGS[i]));
+        }
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(MainHomeActivity.this, arrayList);
+        recyclerView.setAdapter(adapter);// set adapter on recyclerview
+        adapter.notifyDataSetChanged();// Notify the adapter
     }
 
     @Override
@@ -431,10 +455,14 @@ public class MainHomeActivity extends AppCompatActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_food_home, container, false);
+            MainHomeActivity mainHomeActivity = new MainHomeActivity();
+            RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.fruit_recycler_view);
+            mainHomeActivity.initviews(recyclerView);
             // TextView textView = (TextView) rootView.findViewById(R.id.section_label);
             /*textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));*/
             return rootView;
         }
+
     }
 
 
