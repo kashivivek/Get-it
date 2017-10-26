@@ -26,7 +26,6 @@
         android:layout_height="wrap_content"
         android:layout_margin="3dip"
         android:layout_toRightOf="@+id/profile_pic"
-        android:text="@string/user_name"
         android:textColor="@color/black"
         android:textSize="24dp"
         android:textStyle="bold" />
@@ -38,7 +37,6 @@
         android:layout_below="@+id/display_uname"
         android:layout_margin="3dip"
         android:layout_toRightOf="@+id/profile_pic"
-        android:text="@string/age_place"
         android:textColor="@color/black"
         android:textSize="16dp"
         android:textStyle="bold" />

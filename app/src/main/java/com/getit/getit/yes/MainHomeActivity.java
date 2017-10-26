@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
+import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
@@ -37,11 +38,24 @@ import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.getit.getit.pojo.DataModel;
+import com.getit.getit.pojo.User;
 import com.getit.getit.utils.RecyclerViewAdapter;
 import com.getit.getit.utils.SessionManager;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.StorageReference;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -297,10 +311,34 @@ public class MainHomeActivity extends AppCompatActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_main_home, container, false);
+            final View rootView = inflater.inflate(R.layout.fragment_main_home, container, false);
             //  TextView textView = (TextView) rootView.findViewById(R.id.section_label);
             /*textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));*/
             ImageView image = (ImageView) rootView.findViewById(R.id.intro_image);
+            FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser() ;
+            DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
+            String currentUID = currentFirebaseUser.getUid();
+            mRootRef.child("userinfo").child(currentUID).addValueEventListener(
+                    new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            // Get user value
+                            User user = dataSnapshot.getValue(User.class);
+
+                            // [START_EXCLUDE]
+
+                                TextView name = (TextView) rootView.findViewById(R.id.display_uname);
+                                name.setText(user.getName());
+                                TextView age_place = (TextView) rootView.findViewById(R.id.Age_Place);
+                                age_place.setText(user.getPlace());
+                        }
+
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
             //Bitmap bMap = BitmapFactory.decodeResource(getResources(), R.drawable.orange_arrow);
             //image.setImageBitmap(bMap);
 
@@ -455,9 +493,6 @@ public class MainHomeActivity extends AppCompatActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_food_home, container, false);
-            MainHomeActivity mainHomeActivity = new MainHomeActivity();
-            RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.fruit_recycler_view);
-            mainHomeActivity.initviews(recyclerView);
             // TextView textView = (TextView) rootView.findViewById(R.id.section_label);
             /*textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));*/
             return rootView;
