@@ -1,15 +1,20 @@
 package com.getit.getit.db;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 
 import android.content.Context;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.os.Environment;
 import android.util.Log;
 
 public class DatabaseCopier extends SQLiteOpenHelper
@@ -43,17 +48,11 @@ public class DatabaseCopier extends SQLiteOpenHelper
         {
             this.getReadableDatabase();
             this.close();
-            try
-            {
+
                 //Copy the database from assests
                 copyDataBase();
                 Log.e(TAG, "createDatabase database created");
-            }
-            catch (IOException mIOException)
-            {
-                mIOException.printStackTrace();
-                throw new Error("ErrorCopyingDataBase");
-            }
+
         }
     }
 
@@ -65,10 +64,36 @@ public class DatabaseCopier extends SQLiteOpenHelper
         return dbFile.exists();
     }
 
+    public void copyDataFromFile() throws IOException {
+        DatabaseCopier databaseCopier = new DatabaseCopier(mContext);
+        this.mDataBase = databaseCopier.getWritableDatabase();
+        //InputStream insertsStream = new FileInputStream("/storage/emulated/0/Android/data/com.getit.getit.yes/files/Get_it.sql");
+        File file = new File("/storage/emulated/0/Android/data/com.getit.getit.yes/files/Get_it.sql");
+        System.out.println("@@@File absolute path"+file.getAbsolutePath());
+        System.out.println("@@@File can be read"+file.canRead());
+        //insertsStream.close();
+       // BufferedReader insertReader = new BufferedReader(new InputStreamReader(insertsStream));
+        // Iterate through lines (assuming each insert has its own line and theres no other stuff)
+        /*try {
+            while (insertReader.ready()) {
+                String insertStmt = insertReader.readLine();
+                mDataBase.execSQL(insertStmt);
+            }
+            System.out.println("Data copied @@@@@@@@");
+            insertReader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
+    }
+
     //Copy the database from assets
-    private void copyDataBase() throws IOException
-    {
-        InputStream mInput = mContext.getAssets().open(DB_NAME);
+    private void copyDataBase() {
+
+        try {
+            InputStream mInput = mContext.getAssets().open(DB_NAME);
+            //FileInputStream mInput = null;
+            //mInput = new FileInputStream(mContext.getFilesDir()+"/Download/Get_it.db");
+
         String outFileName = DB_PATH + DB_NAME;
         OutputStream mOutput = new FileOutputStream(outFileName);
         byte[] mBuffer = new byte[1024];
@@ -80,6 +105,9 @@ public class DatabaseCopier extends SQLiteOpenHelper
         mOutput.flush();
         mOutput.close();
         mInput.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     //Open the database, so we can query it

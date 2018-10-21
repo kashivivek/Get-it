@@ -8,6 +8,7 @@
     import android.content.pm.PackageManager;
     import android.location.LocationManager;
     import android.os.Bundle;
+    import android.os.Environment;
     import android.support.annotation.NonNull;
     import android.support.v4.app.ActivityCompat;
     import android.support.v4.content.ContextCompat;
@@ -22,11 +23,15 @@
     import android.widget.ProgressBar;
     import android.widget.Toast;
 
+    import com.getit.getit.db.DatabaseCopier;
     import com.getit.getit.utils.SessionManager;
     import com.google.android.gms.tasks.OnCompleteListener;
     import com.google.android.gms.tasks.Task;
     import com.google.firebase.auth.AuthResult;
     import com.google.firebase.auth.FirebaseAuth;
+
+    import java.io.File;
+    import java.io.IOException;
 
 
     public class MainActivity extends Activity {
@@ -46,6 +51,8 @@
 
         buildAlertMessageNoGps();
         super.onCreate(savedInstanceState);
+        FileDownloader runner = new FileDownloader(this);
+        runner.execute();
         auth = FirebaseAuth.getInstance();
         if (auth.getCurrentUser() != null) {
             startActivity(new Intent(MainActivity.this, MainHomeActivity.class));
@@ -54,6 +61,12 @@
         setContentView(R.layout.activity_main);
         final TestAdapter mDbHelper = new TestAdapter(getApplicationContext());
         mDbHelper.createDatabase();
+        DatabaseCopier databaseCopier= new DatabaseCopier(this);
+        try {
+            databaseCopier.copyDataFromFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         mDbHelper.open();
         session = new SessionManager(getApplicationContext());
         inputEmail = (EditText) findViewById(R.id.username);
