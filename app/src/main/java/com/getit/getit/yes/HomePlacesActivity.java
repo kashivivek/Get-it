@@ -124,7 +124,7 @@ public class HomePlacesActivity extends FragmentActivity implements LocationList
                     sb.append("location="+mLatitude+","+mLongitude);
                     sb.append("&radius=5000");
                     sb.append("&sensor=true");
-                    sb.append("&key=AIzaSyA0z5zRlZCsJv3jU5OvTmt51Op7h_zZVVs");
+                    sb.append("&key=AIzaSyAi277KRCYJvACkijHXc3W6xoH9RnXVMG4");
 
                     // Creating a new non-ui thread task to download json data
                     PlacesTask placesTask = new PlacesTask();

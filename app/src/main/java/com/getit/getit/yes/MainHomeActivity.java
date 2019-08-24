@@ -328,9 +328,17 @@ public class MainHomeActivity extends AppCompatActivity {
                             // [START_EXCLUDE]
 
                                 TextView name = (TextView) rootView.findViewById(R.id.display_uname);
-                                name.setText(user.getName());
+                                try {
+                                    name.setText(user.getName());
+                                }catch(NullPointerException e){
+                                    name.setText("Name not found");
+                                }
                                 TextView age_place = (TextView) rootView.findViewById(R.id.Age_Place);
+                            try {
                                 age_place.setText(user.getPlace());
+                            }catch(NullPointerException e){
+                                age_place.setText("Location not found in db");
+                            }
                         }
 
 

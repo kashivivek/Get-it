@@ -191,6 +191,6 @@ Imperdiet id felis lectus accumsan class, neque nullam quam, adipiscing turpis v
     <string name="tag_chaat">food:chaat</string>
     <string name="privacy">Privacy Policy</string>
     <string name="labelPlayVisionVideo">Watch Video</string>
-
+    <string name="labelWarningText">Warning: This App is currently in development so you will see a lot of functionality not working</string>
 
 </resources>
