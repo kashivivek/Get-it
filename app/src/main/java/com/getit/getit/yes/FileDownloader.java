@@ -1,25 +1,12 @@
 package com.getit.getit.yes;
 
-import android.app.Activity;
 import android.app.DownloadManager;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Environment;
-import android.support.annotation.NonNull;
-import android.util.Log;
-
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.storage.FileDownloadTask;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-
-import java.io.File;
-import java.io.IOException;
+import androidx.annotation.NonNull;
 
 import static android.content.Context.DOWNLOAD_SERVICE;
 

@@ -12,5 +12,6 @@
     <dimen name="image_thumbnail_size">100dp</dimen>
     <dimen name="image_thumbnail_spacing">1dp</dimen>
     <dimen name="productinfotext_size">18sp</dimen>
+    <dimen name="appbar_padding">16dp</dimen>
 
 </resources>

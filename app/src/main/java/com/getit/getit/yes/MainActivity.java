@@ -8,10 +8,10 @@
     import android.content.pm.PackageManager;
     import android.location.LocationManager;
     import android.os.Bundle;
-    import android.os.Environment;
-    import android.support.annotation.NonNull;
-    import android.support.v4.app.ActivityCompat;
-    import android.support.v4.content.ContextCompat;
+
+    import androidx.annotation.NonNull;
+    import androidx.core.app.ActivityCompat;
+    import androidx.core.content.ContextCompat;
     import android.text.TextUtils;
     import android.view.Menu;
     import android.view.MenuItem;
@@ -30,7 +30,6 @@
     import com.google.firebase.auth.AuthResult;
     import com.google.firebase.auth.FirebaseAuth;
 
-    import java.io.File;
     import java.io.IOException;
 
 
@@ -39,14 +38,13 @@
         private EditText inputEmail, inputPassword;
         private FirebaseAuth auth;
         private ProgressBar progressBar;
-        private Button btnSignup, btnLogin;
+        private Button btnLogin;
         SessionManager session;
         private String username,password;
         private CheckBox saveLoginCheckBox;
-        private SharedPreferences loginPreferences;
         private SharedPreferences.Editor loginPrefsEditor;
-        private Boolean saveLogin;
-    @Override
+
+        @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         buildAlertMessageNoGps();
@@ -54,7 +52,7 @@
         FileDownloader runner = new FileDownloader(this);
         runner.execute();
         auth = FirebaseAuth.getInstance();
-        if (auth.getCurrentUser() != null) {
+        if (auth.getCurrentUser()!= null) {
             startActivity(new Intent(MainActivity.this, MainHomeActivity.class));
             finish();
         }
@@ -72,13 +70,13 @@
         inputEmail = (EditText) findViewById(R.id.username);
         inputPassword = (EditText) findViewById(R.id.password);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
-        btnSignup = (Button) findViewById(R.id.signup_button);
+        Button btnSignup = (Button) findViewById(R.id.signup_button);
         btnLogin = (Button) findViewById(R.id.submit_button);
         saveLoginCheckBox = (CheckBox)findViewById(R.id.saveLoginCheckBox);
-        loginPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
+        SharedPreferences loginPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
         loginPrefsEditor = loginPreferences.edit();
-        saveLogin = loginPreferences.getBoolean("saveLogin", false);
-        if (saveLogin == true) {
+            boolean saveLogin = loginPreferences.getBoolean("saveLogin", false);
+        if (saveLogin) {
             inputEmail.setText(loginPreferences.getString("username", ""));
             inputPassword.setText(loginPreferences.getString("password", ""));
             saveLoginCheckBox.setChecked(true);
@@ -97,7 +95,7 @@
                                                         loginPrefsEditor.putBoolean("saveLogin", true);
                                                         loginPrefsEditor.putString("username", username);
                                                         loginPrefsEditor.putString("password", password);
-                                                        loginPrefsEditor.commit();
+                                                        loginPrefsEditor.apply();
                                                     } else {
                                                         loginPrefsEditor.clear();
                                                         loginPrefsEditor.commit();

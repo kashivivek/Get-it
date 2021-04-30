@@ -13,8 +13,10 @@ import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.FragmentActivity;
+
+import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.FragmentActivity;
+
 import android.view.Menu;
 
 import com.cocosw.bottomsheet.BottomSheet;
@@ -35,7 +37,6 @@ public class HomeActivity extends FragmentActivity implements OnMapReadyCallback
     static final LatLng MELBOURNE = new LatLng(-37.81319, 144.96298);
     final private int REQUEST_CODE_ASK_PERMISSIONS = 123;
     GoogleMap map;
-    private ArrayList<LatLng> listLatLng = null;
     ArrayList<LatLng> arrayList = null;
     HashMap<Marker, LatLngBean> hashMapMarker = new HashMap<Marker, LatLngBean>();
     Context ctx;
@@ -53,6 +54,7 @@ public class HomeActivity extends FragmentActivity implements OnMapReadyCallback
 
 
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_home_maps, menu);
@@ -90,6 +92,16 @@ public class HomeActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap map) {
         // Add a marker in Sydney, Australia, and move the camera.
         try {
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                // TODO: Consider calling
+                //    ActivityCompat#requestPermissions
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for ActivityCompat#requestPermissions for more details.
+                return;
+            }
             map.setMyLocationEnabled(true);
         } catch (Exception e) {
             statusCheck();
@@ -149,12 +161,22 @@ public class HomeActivity extends FragmentActivity implements OnMapReadyCallback
         map = googlemap;
         map.clear();
         map.getUiSettings().setMyLocationButtonEnabled(true);
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
         map.setMyLocationEnabled(true);
         map.getUiSettings().setZoomControlsEnabled(true);
 
         if (arrayList.size() > 0) {
             try {
-                listLatLng = new ArrayList<>();
+                ArrayList<LatLng> listLatLng = new ArrayList<>();
                 for (int i = 0; i < arrayList.size(); i++) {
                     bean = arrayList.get(i);
                     if (bean.getLatitude().length() > 0 && bean.getLongitude().length() > 0) {

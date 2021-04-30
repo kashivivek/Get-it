@@ -1,8 +1,10 @@
 package com.getit.getit.yes;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Dialog;
+import android.content.pm.PackageManager;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
@@ -10,7 +12,10 @@ import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
+
+import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.FragmentActivity;
+
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -21,6 +26,7 @@ import android.widget.Spinner;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.google.android.gms.common.api.GoogleApi;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -47,7 +53,11 @@ public class HomePlacesActivity extends FragmentActivity implements LocationList
     String[] mPlaceTypeName = null;
     double mLatitude = 0;
     double mLongitude = 0;
-    private GoogleApiClient mGoogleApiClient;
+    private GoogleApi mGoogleApiClient;
+
+    public HomePlacesActivity(GoogleApi mGoogleApiClient) {
+        this.mGoogleApiClient = mGoogleApiClient;
+    }
 
     @TargetApi(Build.VERSION_CODES.M)
     @Override
@@ -84,9 +94,19 @@ public class HomePlacesActivity extends FragmentActivity implements LocationList
             SupportMapFragment fragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
 
             // Getting Google Map
-            mGoogleMap = fragment.getMap();
+          // mGoogleMap = fragment.getMapAsync();
 
             // Enabling MyLocation in Google Map
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                // TODO: Consider calling
+                //    ActivityCompat#requestPermissions
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for ActivityCompat#requestPermissions for more details.
+                return;
+            }
             mGoogleMap.setMyLocationEnabled(true);
 
             // Getting LocationManager object from System Service LOCATION_SERVICE
