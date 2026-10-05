@@ -1,0 +1,63 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return signedIn() && exists(/databases/$(database)/documents/admins/$(request.auth.uid));
+    }
+
+    function validProvider(data) {
+      return data.keys().hasOnly(['name', 'phone', 'category', 'type', 'location', 'imageUrl',
+                                  'address', 'description', 'createdAt', 'createdBy'])
+        && data.keys().hasAll(['name', 'phone', 'category', 'type', 'location'])
+        && data.name is string && data.name.size() > 0 && data.name.size() <= 100
+        && data.phone is string && data.phone.size() <= 30
+        && data.category in ['household', 'lifestyle', 'groceries', 'food']
+        && data.type is string && data.type.size() > 0 && data.type.size() <= 40
+        && data.location is latlng
+        && (!('imageUrl' in data) || (data.imageUrl is string
+              && (data.imageUrl == '' || data.imageUrl.matches('^https://.*'))))
+        && (!('address' in data) || (data.address is string && data.address.size() <= 300))
+        && (!('description' in data) || (data.description is string && data.description.size() <= 2000));
+    }
+
+    match /providers/{providerId} {
+      allow read: if signedIn();
+      allow create: if signedIn()
+        && request.resource.data.createdBy == request.auth.uid
+        && validProvider(request.resource.data);
+      allow update: if (isAdmin() || resource.data.createdBy == request.auth.uid)
+        && request.resource.data.createdBy == resource.data.createdBy
+        && validProvider(request.resource.data);
+      allow delete: if isAdmin() || (signedIn() && resource.data.createdBy == request.auth.uid);
+    }
+
+    // Write-only for users; reviewed by admins via the Firebase console or tools/admin.
+    match /reports/{reportId} {
+      allow create: if signedIn()
+        && request.resource.data.keys().hasOnly(['providerId', 'reason', 'reportedBy', 'createdAt'])
+        && request.resource.data.reportedBy == request.auth.uid
+        && request.resource.data.providerId is string
+        && request.resource.data.reason is string && request.resource.data.reason.size() <= 500;
+      allow read, update, delete: if isAdmin();
+    }
+
+    match /users/{uid} {
+      allow read, delete: if signedIn() && request.auth.uid == uid;
+      allow create, update: if signedIn() && request.auth.uid == uid
+        && request.resource.data.keys().hasOnly(['name', 'email', 'place', 'photo', 'createdAt', 'updatedAt'])
+        && (!('photo' in request.resource.data)
+              || (request.resource.data.photo is bytes && request.resource.data.photo.size() <= 300000));
+    }
+
+    // Managed only through tools/admin (Admin SDK bypasses rules).
+    match /admins/{uid} {
+      allow read: if signedIn() && request.auth.uid == uid;
+      allow write: if false;
+    }
+  }
+}

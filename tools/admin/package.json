@@ -1,0 +1,17 @@
+{
+  "name": "getit-admin",
+  "private": true,
+  "type": "module",
+  "description": "Admin tasks for the Get-it Firestore backend (seed providers, manage admins).",
+  "scripts": {
+    "seed": "node index.js seed",
+    "grant-admin": "node index.js grant-admin",
+    "revoke-admin": "node index.js revoke-admin",
+    "list-admins": "node index.js list-admins",
+    "list-reports": "node index.js list-reports",
+    "delete-provider": "node index.js delete-provider"
+  },
+  "dependencies": {
+    "firebase-admin": "^13.5.0"
+  }
+}

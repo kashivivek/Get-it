@@ -1,0 +1,86 @@
+[debug] [2026-10-05T04:17:50.153Z] ----------------------------------------------------------------------
+[debug] [2026-10-05T04:17:50.162Z] Command:       /usr/local/bin/firebase /Users/k0b0c22/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/bin/firebase deploy --only firestore:rules --project stellar-cumulus-108603
+[debug] [2026-10-05T04:17:50.165Z] CLI Version:   15.29.0
+[debug] [2026-10-05T04:17:50.165Z] Platform:      darwin
+[debug] [2026-10-05T04:17:50.165Z] Node Version:  v20.18.2
+[debug] [2026-10-05T04:17:50.166Z] Detected Agent: unknown
+[debug] [2026-10-05T04:17:50.167Z] Time:          Sun Oct 04 2026 21:17:50 GMT-0700 (Pacific Daylight Time)
+[debug] [2026-10-05T04:17:50.167Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-10-05T04:17:50.180Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2026-10-05T04:18:02.919Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-10-05T04:18:02.920Z] > authorizing via signed-in user (kashivivek@gmail.com)
+[debug] [2026-10-05T04:18:02.921Z] [iam] checking project stellar-cumulus-108603 for permissions ["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get"]
+[debug] [2026-10-05T04:18:02.922Z] Checked if tokens are valid: false, expires at: 1791169626050
+[debug] [2026-10-05T04:18:02.923Z] Checked if tokens are valid: false, expires at: 1791169626050
+[debug] [2026-10-05T04:18:02.923Z] > refreshing access token with scopes: []
+[debug] [2026-10-05T04:18:02.925Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2026-10-05T04:18:02.926Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-10-05T04:18:03.299Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2026-10-05T04:18:03.300Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-10-05T04:18:03.331Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/stellar-cumulus-108603:testIamPermissions [none]
+[debug] [2026-10-05T04:18:03.331Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/stellar-cumulus-108603:testIamPermissions  x-goog-user-project=stellar-cumulus-108603
+[debug] [2026-10-05T04:18:03.331Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/stellar-cumulus-108603:testIamPermissions {"permissions":["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get"]}
+[debug] [2026-10-05T04:18:03.719Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/stellar-cumulus-108603:testIamPermissions 403
+[debug] [2026-10-05T04:18:03.719Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/stellar-cumulus-108603:testIamPermissions {"error":{"code":403,"message":"Cloud Resource Manager API has not been used in project stellar-cumulus-108603 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/cloudresourcemanager.googleapis.com/overview?project=stellar-cumulus-108603 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry.","status":"PERMISSION_DENIED","details":[{"@type":"type.googleapis.com/google.rpc.ErrorInfo","reason":"SERVICE_DISABLED","domain":"googleapis.com","metadata":{"consumer":"projects/stellar-cumulus-108603","containerInfo":"stellar-cumulus-108603","activationUrl":"https://console.developers.google.com/apis/api/cloudresourcemanager.googleapis.com/overview?project=stellar-cumulus-108603","serviceTitle":"Cloud Resource Manager API","service":"cloudresourcemanager.googleapis.com"}},{"@type":"type.googleapis.com/google.rpc.LocalizedMessage","locale":"en-US","message":"Cloud Resource Manager API has not been used in project stellar-cumulus-108603 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/cloudresourcemanager.googleapis.com/overview?project=stellar-cumulus-108603 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry."},{"@type":"type.googleapis.com/google.rpc.Help","links":[{"description":"Google developers console API activation","url":"https://console.developers.google.com/apis/api/cloudresourcemanager.googleapis.com/overview?project=stellar-cumulus-108603"}]}]}}
+[debug] [2026-10-05T04:18:03.721Z] [iam] error while checking permissions, command may fail: Request to https://cloudresourcemanager.googleapis.com/v1/projects/stellar-cumulus-108603:testIamPermissions had HTTP Error: 403, Cloud Resource Manager API has not been used in project stellar-cumulus-108603 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/cloudresourcemanager.googleapis.com/overview?project=stellar-cumulus-108603 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry.
+[info] 
+[info] === Deploying to 'stellar-cumulus-108603'...
+[info] 
+[info] i  deploying firestore 
+[info] i  firestore: ensuring required API firestore.googleapis.com is enabled... 
+[info] i  firestore: ensuring required API firestore.googleapis.com is enabled... 
+[debug] [2026-10-05T04:18:03.725Z] Checked if tokens are valid: true, expires at: 1791177482300
+[debug] [2026-10-05T04:18:03.725Z] Checked if tokens are valid: true, expires at: 1791177482300
+[debug] [2026-10-05T04:18:03.726Z] >>> [apiv2][query] GET https://firestore.googleapis.com/v1/projects/stellar-cumulus-108603/databases/(default) [none]
+[debug] [2026-10-05T04:18:04.266Z] <<< [apiv2][status] GET https://firestore.googleapis.com/v1/projects/stellar-cumulus-108603/databases/(default) 200
+[debug] [2026-10-05T04:18:04.266Z] <<< [apiv2][body] GET https://firestore.googleapis.com/v1/projects/stellar-cumulus-108603/databases/(default) {"name":"projects/stellar-cumulus-108603/databases/(default)","uid":"20a4c1ba-fc42-41ff-8f81-a462f174b495","createTime":"1970-01-01T00:00:00Z","updateTime":"2022-02-03T04:25:34.083358Z","locationId":"nam5","type":"FIRESTORE_NATIVE","concurrencyMode":"PESSIMISTIC","versionRetentionPeriod":"3600s","earliestVersionTime":"2026-10-05T03:18:04.284242Z","appEngineIntegrationMode":"ENABLED","keyPrefix":"s","pointInTimeRecoveryEnablement":"POINT_IN_TIME_RECOVERY_DISABLED","deleteProtectionState":"DELETE_PROTECTION_DISABLED","databaseEdition":"STANDARD","freeTier":true,"realtimeUpdatesMode":"REALTIME_UPDATES_MODE_ENABLED","etag":"IN2V6tiCopcDMJ267pPp0JYD"}
+[info] i  firestore: reading indexes from firestore.indexes.json... 
+[info] i  cloud.firestore: checking firestore.rules for compilation errors... 
+[debug] [2026-10-05T04:18:04.269Z] Checked if tokens are valid: true, expires at: 1791177482300
+[debug] [2026-10-05T04:18:04.269Z] Checked if tokens are valid: true, expires at: 1791177482300
+[debug] [2026-10-05T04:18:04.270Z] >>> [apiv2][query] POST https://firebaserules.googleapis.com/v1/projects/stellar-cumulus-108603:test [none]
+[debug] [2026-10-05T04:18:04.270Z] >>> [apiv2][body] POST https://firebaserules.googleapis.com/v1/projects/stellar-cumulus-108603:test [omitted]
+[debug] [2026-10-05T04:18:04.652Z] <<< [apiv2][status] POST https://firebaserules.googleapis.com/v1/projects/stellar-cumulus-108603:test 200
+[debug] [2026-10-05T04:18:04.652Z] <<< [apiv2][body] POST https://firebaserules.googleapis.com/v1/projects/stellar-cumulus-108603:test {}
+[info] ✔  cloud.firestore: rules file firestore.rules compiled successfully 
+[debug] [2026-10-05T04:18:04.658Z] Checked if tokens are valid: true, expires at: 1791177482300
+[debug] [2026-10-05T04:18:04.658Z] Checked if tokens are valid: true, expires at: 1791177482300
+[debug] [2026-10-05T04:18:04.659Z] >>> [apiv2][query] GET https://firebaserules.googleapis.com/v1/projects/stellar-cumulus-108603/releases pageSize=10&pageToken=
+[debug] [2026-10-05T04:18:04.798Z] <<< [apiv2][status] GET https://firebaserules.googleapis.com/v1/projects/stellar-cumulus-108603/releases 200
+[debug] [2026-10-05T04:18:04.798Z] <<< [apiv2][body] GET https://firebaserules.googleapis.com/v1/projects/stellar-cumulus-108603/releases {"releases":[{"name":"projects/stellar-cumulus-108603/releases/cloud.firestore","rulesetName":"projects/stellar-cumulus-108603/rulesets/18c004aa-9e9f-4643-8644-a9ff29d640b4","createTime":"2019-10-10T07:42:53.796811Z","updateTime":"2026-10-05T02:17:08.045702Z"},{"name":"projects/stellar-cumulus-108603/releases/firebase.storage","rulesetName":"projects/stellar-cumulus-108603/rulesets/1f6113d9-e0d4-4195-b936-f5993b4a8387","createTime":"2017-02-09T23:43:57.146063Z","updateTime":"2017-02-09T23:43:57.146063Z"},{"name":"projects/stellar-cumulus-108603/releases/firebase.storage/stellar-cumulus-108603.appspot.com","rulesetName":"projects/stellar-cumulus-108603/rulesets/5adcca3b-82c4-4f40-b134-55565d9724b9","createTime":"2017-03-03T00:52:30.177807Z","updateTime":"2017-10-26T19:42:08.573073Z"}]}
+[debug] [2026-10-05T04:18:04.811Z] Checked if tokens are valid: true, expires at: 1791177482300
+[debug] [2026-10-05T04:18:04.811Z] Checked if tokens are valid: true, expires at: 1791177482300
+[debug] [2026-10-05T04:18:04.811Z] >>> [apiv2][query] GET https://firebaserules.googleapis.com/v1/projects/stellar-cumulus-108603/rulesets/18c004aa-9e9f-4643-8644-a9ff29d640b4 [none]
+[debug] [2026-10-05T04:18:04.944Z] <<< [apiv2][status] GET https://firebaserules.googleapis.com/v1/projects/stellar-cumulus-108603/rulesets/18c004aa-9e9f-4643-8644-a9ff29d640b4 200
+[debug] [2026-10-05T04:18:04.944Z] <<< [apiv2][body] GET https://firebaserules.googleapis.com/v1/projects/stellar-cumulus-108603/rulesets/18c004aa-9e9f-4643-8644-a9ff29d640b4 [omitted]
+[info] i  firestore: uploading rules firestore.rules... 
+[debug] [2026-10-05T04:18:04.946Z] Checked if tokens are valid: true, expires at: 1791177482300
+[debug] [2026-10-05T04:18:04.946Z] Checked if tokens are valid: true, expires at: 1791177482300
+[debug] [2026-10-05T04:18:04.946Z] >>> [apiv2][query] POST https://firebaserules.googleapis.com/v1/projects/stellar-cumulus-108603/rulesets [none]
+[debug] [2026-10-05T04:18:04.946Z] >>> [apiv2][body] POST https://firebaserules.googleapis.com/v1/projects/stellar-cumulus-108603/rulesets [omitted]
+[debug] [2026-10-05T04:18:05.123Z] <<< [apiv2][status] POST https://firebaserules.googleapis.com/v1/projects/stellar-cumulus-108603/rulesets 200
+[debug] [2026-10-05T04:18:05.123Z] <<< [apiv2][body] POST https://firebaserules.googleapis.com/v1/projects/stellar-cumulus-108603/rulesets {"name":"projects/stellar-cumulus-108603/rulesets/3201f9ef-232a-4787-a41e-ec57d964b80e","source":{"files":[{"content":"rules_version = '2';\nservice cloud.firestore {\n  match /databases/{database}/documents {\n\n    function signedIn() {\n      return request.auth != null;\n    }\n\n    function isAdmin() {\n      return signedIn() && exists(/databases/$(database)/documents/admins/$(request.auth.uid));\n    }\n\n    function validProvider(data) {\n      return data.keys().hasOnly(['name', 'phone', 'category', 'type', 'location', 'imageUrl',\n                                  'address', 'description', 'createdAt', 'createdBy'])\n        && data.keys().hasAll(['name', 'phone', 'category', 'type', 'location'])\n        && data.name is string && data.name.size() > 0 && data.name.size() <= 100\n        && data.phone is string && data.phone.size() <= 30\n        && data.category in ['household', 'lifestyle', 'groceries', 'food']\n        && data.type is string && data.type.size() > 0 && data.type.size() <= 40\n        && data.location is latlng\n        && (!('imageUrl' in data) || (data.imageUrl is string\n              && (data.imageUrl == '' || data.imageUrl.matches('^https://.*'))))\n        && (!('address' in data) || (data.address is string && data.address.size() <= 300))\n        && (!('description' in data) || (data.description is string && data.description.size() <= 2000));\n    }\n\n    match /providers/{providerId} {\n      allow read: if signedIn();\n      allow create: if signedIn()\n        && request.resource.data.createdBy == request.auth.uid\n        && validProvider(request.resource.data);\n      allow update: if (isAdmin() || resource.data.createdBy == request.auth.uid)\n        && request.resource.data.createdBy == resource.data.createdBy\n        && validProvider(request.resource.data);\n      allow delete: if isAdmin() || (signedIn() && resource.data.createdBy == request.auth.uid);\n    }\n\n    // Write-only for users; reviewed by admins via the Firebase console or tools/admin.\n    match /reports/{reportId} {\n      allow create: if signedIn()\n        && request.resource.data.keys().hasOnly(['providerId', 'reason', 'reportedBy', 'createdAt'])\n        && request.resource.data.reportedBy == request.auth.uid\n        && request.resource.data.providerId is string\n        && request.resource.data.reason is string && request.resource.data.reason.size() <= 500;\n      allow read, update, delete: if isAdmin();\n    }\n\n    match /users/{uid} {\n      allow read, delete: if signedIn() && request.auth.uid == uid;\n      allow create, update: if signedIn() && request.auth.uid == uid\n        && request.resource.data.keys().hasOnly(['name', 'email', 'place', 'photo', 'createdAt', 'updatedAt'])\n        && (!('photo' in request.resource.data)\n              || (request.resource.data.photo is bytes && request.resource.data.photo.size() <= 300000));\n    }\n\n    // Managed only through tools/admin (Admin SDK bypasses rules).\n    match /admins/{uid} {\n      allow read: if signedIn() && request.auth.uid == uid;\n      allow write: if false;\n    }\n  }\n}\n","name":"firestore.rules"}]},"createTime":"2026-10-05T04:18:05.126015Z","metadata":{"services":["cloud.firestore"]}}
+[debug] [2026-10-05T04:18:05.123Z] [rules] created ruleset projects/stellar-cumulus-108603/rulesets/3201f9ef-232a-4787-a41e-ec57d964b80e
+[debug] [2026-10-05T04:18:05.124Z] [rules] releasing cloud.firestore with ruleset projects/stellar-cumulus-108603/rulesets/3201f9ef-232a-4787-a41e-ec57d964b80e
+[debug] [2026-10-05T04:18:05.125Z] Checked if tokens are valid: true, expires at: 1791177482300
+[debug] [2026-10-05T04:18:05.125Z] Checked if tokens are valid: true, expires at: 1791177482300
+[debug] [2026-10-05T04:18:05.125Z] >>> [apiv2][query] PATCH https://firebaserules.googleapis.com/v1/projects/stellar-cumulus-108603/releases/cloud.firestore [none]
+[debug] [2026-10-05T04:18:05.125Z] >>> [apiv2][body] PATCH https://firebaserules.googleapis.com/v1/projects/stellar-cumulus-108603/releases/cloud.firestore {"release":{"name":"projects/stellar-cumulus-108603/releases/cloud.firestore","rulesetName":"projects/stellar-cumulus-108603/rulesets/3201f9ef-232a-4787-a41e-ec57d964b80e"}}
+[debug] [2026-10-05T04:18:05.278Z] <<< [apiv2][status] PATCH https://firebaserules.googleapis.com/v1/projects/stellar-cumulus-108603/releases/cloud.firestore 200
+[debug] [2026-10-05T04:18:05.279Z] <<< [apiv2][body] PATCH https://firebaserules.googleapis.com/v1/projects/stellar-cumulus-108603/releases/cloud.firestore {"name":"projects/stellar-cumulus-108603/releases/cloud.firestore","rulesetName":"projects/stellar-cumulus-108603/rulesets/3201f9ef-232a-4787-a41e-ec57d964b80e","createTime":"2019-10-10T07:42:53.796811Z","updateTime":"2026-10-05T04:18:05.288816Z"}
+[debug] [2026-10-05T04:18:05.279Z] [rules] updated release projects/stellar-cumulus-108603/releases/cloud.firestore
+[info] ✔  firestore: released rules firestore.rules to cloud.firestore 
+[info] 
+[info] ✔  Deploy complete! 
+[info] 
+[info] Project Console: https://console.firebase.google.com/project/stellar-cumulus-108603/overview
+[debug] [2026-10-05T04:18:12.951Z] *** [apiv2] error from fetch(https://firebase-public.firebaseio.com/cli.json, {"headers":{},"method":"GET"}): ConnectTimeoutError: Connect Timeout Error (attempted addresses: 34.120.206.254:443, timeout: 10000ms)
+[warn] ⚠  Unable to fetch the CLI MOTD and remote config. This is not a fatal error, but may indicate an issue with your network connection. 
+[debug] [2026-10-05T04:18:12.962Z] Failed to fetch MOTD FirebaseError: Failed to make request to https://firebase-public.firebaseio.com/cli.json
+[debug] [2026-10-05T04:18:15.304Z] Error: Timed out.
+    at Timeout._onTimeout (/Users/k0b0c22/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/utils.js:296:49)
+    at listOnTimeout (node:internal/timers:581:17)
+    at process.processTimers (node:internal/timers:519:7)
+[error] 
+[error] Error: An unexpected error has occurred.

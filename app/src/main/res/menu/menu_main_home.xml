@@ -1,19 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.getit.getit.yes.MainHomeActivity">
-
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_account"
+        android:icon="@drawable/ic_account"
+        android:title="@string/account"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_add_provider"
+        android:title="@string/add_provider"
+        app:showAsAction="never" />
     <item
         android:id="@+id/action_privacy"
-        android:orderInCategory="100"
         android:title="@string/privacy"
         app:showAsAction="never" />
-
-    0<item
+    <item
         android:id="@+id/action_logout"
-        android:orderInCategory="100"
         android:title="@string/logout"
         app:showAsAction="never" />
-
-
 </menu>

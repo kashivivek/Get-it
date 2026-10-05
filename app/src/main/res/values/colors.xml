@@ -31,6 +31,9 @@
     <color name="text">#223038</color>
     <color name="subtext">#a3a4a7</color>
     <color name ="wallet_holo_blue_light">#0000FF</color>
+    <color name="brand">#42AAAF</color>
+    <color name="brand_dark">#2E7F83</color>
+    <color name="brand_light">#CDEDEE</color>
 
 
 </resources>

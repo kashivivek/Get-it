@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingBottom="16dp">
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="24dp"
+        android:paddingTop="8dp"
+        android:textAppearance="?attr/textAppearanceTitleLarge" />
+
+    <TextView
+        android:id="@+id/subtitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="24dp"
+        android:paddingBottom="8dp"
+        android:textAppearance="?attr/textAppearanceBodyMedium"
+        android:textColor="?attr/colorOnSurfaceVariant" />
+
+    <LinearLayout
+        android:id="@+id/directions"
+        style="@style/Widget.GetIt.SheetAction">
+
+        <ImageView
+            style="@style/Widget.GetIt.SheetActionIcon"
+            android:src="@drawable/book_service" />
+
+        <TextView
+            style="@style/Widget.GetIt.SheetActionText"
+            android:text="@string/directions" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/call"
+        style="@style/Widget.GetIt.SheetAction">
+
+        <ImageView
+            style="@style/Widget.GetIt.SheetActionIcon"
+            android:src="@drawable/call_service" />
+
+        <TextView
+            style="@style/Widget.GetIt.SheetActionText"
+            android:text="@string/call_provider" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/profile"
+        style="@style/Widget.GetIt.SheetAction">
+
+        <ImageView
+            style="@style/Widget.GetIt.SheetActionIcon"
+            android:src="@drawable/profile" />
+
+        <TextView
+            style="@style/Widget.GetIt.SheetActionText"
+            android:text="@string/view_profile" />
+    </LinearLayout>
+</LinearLayout>

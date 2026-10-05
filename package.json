@@ -1,0 +1,10 @@
+{
+  "name": "get-it",
+  "private": true,
+  "scripts": {
+    "android:run": "bash scripts/android-run.sh",
+    "android:build": "bash -c 'export JAVA_HOME=\"/Applications/Android Studio.app/Contents/jbr/Contents/Home\"; ./gradlew :app:assembleDebug'",
+    "android:bundle": "bash -c 'export JAVA_HOME=\"/Applications/Android Studio.app/Contents/jbr/Contents/Home\"; ./gradlew :app:bundleRelease'",
+    "firebase:rules": "firebase deploy --only firestore:rules --project stellar-cumulus-108603"
+  }
+}

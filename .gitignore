@@ -4,4 +4,11 @@
 /.idea/libraries
 .DS_Store
 /build
+/app/build
 /captures
+.kotlin/
+/keystore.properties
+*.jks
+*.keystore
+node_modules/
+service-account*.json
